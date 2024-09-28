@@ -1,0 +1,44 @@
+#pragma once
+
+void Series1();
+void Series2();
+void Series3();
+void Series4();
+void Series5();
+void Series6();
+void Series7();
+void Series8();
+void Series9();
+void Series10();
+void Series11();
+void Series12();
+void Series13();
+void Series14();
+void Series15();
+void Series16();
+void Series17();
+void Series18();
+void Series19();
+void Series20();
+void Series21();
+void Series22();
+void Series23();
+void Series24();
+void Series25();
+void Series26();
+void Series27();
+void Series28();
+void Series29();
+void Series30();
+void Series31();
+void Series32();
+void Series33();
+void Series34();
+void Series35();
+void Series36();
+void Series37();
+void Series38();
+void Series39();
+void Series40();
+
+void Series(bool tr, int begin);
