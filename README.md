@@ -1,0 +1,1 @@
+# 1000_zadach_po_programmirovaniyu
