@@ -600,5 +600,5 @@ void File14() {
 		arif += num;
 	}
 
-	cout << arif / count;
+	cout << arif / count; 
 }
