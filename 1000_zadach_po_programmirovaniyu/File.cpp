@@ -601,5 +601,5 @@ void File14() {
 	}
 
 	cout << arif / count;
-	// test
+	// Писать запятые, а не точки.
 }
