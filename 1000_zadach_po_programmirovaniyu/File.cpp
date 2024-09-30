@@ -115,6 +115,12 @@ void File(bool tr, int begin)
 			cout << endl << endl;
 			break;
 
+		case 17:
+			File17();
+
+			cout << endl << endl;
+			break;
+
 		default:
 			cout << "«адача отсутствует.";
 			cout << endl << endl;
@@ -591,7 +597,7 @@ void File14() {
 	f.close();
 	ofstream file(filename, ios_base::app);
 
-	cout << "¬ведите:";
+	cout << "¬ведите: ";
 	getline(cin, a, ';');
 
 	file << a;
@@ -626,7 +632,7 @@ void File15() {
 	f.close();
 	ofstream file(filename, ios_base::app);
 
-	cout << "¬ведите:";
+	cout << "¬ведите: ";
 	getline(cin, a, ';');
 
 	file << a;
@@ -662,7 +668,7 @@ void File16() {
 	f.close();
 	ofstream file(filename, ios_base::app);
 
-	cout << "¬ведите:";
+	cout << "¬ведите: ";
 	getline(cin, a, ';');
 
 	file << a;
@@ -679,4 +685,45 @@ void File16() {
 	}
 
 	cout << count;
+}
+
+void File17() {
+	int j = 0, count = 1;
+	string a;
+	string filename = "example.txt";
+	string filename2 = "example2.txt";
+
+	ofstream f(filename, ios_base::trunc);
+	f.close();
+	ofstream file(filename, ios_base::app);
+
+	cout << "¬ведите: ";
+	getline(cin, a, ';');
+
+	file << a;
+
+	file.close();
+	ifstream file1(filename, ios_base::app);
+	getline(file1, a, ';');
+	file1.close();
+
+	ofstream f2(filename2, ios_base::trunc);
+	f2.close();
+	ofstream file2(filename2, ios_base::app);
+
+	for (int i = 1; i < size(a); i++) {
+		if (a[i] != a[i - 1]) {
+			count++;
+		}
+		else {
+			file2 << count;
+			count = 1;
+		}
+	}
+	file2.close();
+	ifstream file3(filename2, ios_base::app);
+	getline(file3, a, ';');
+	file3.close();
+
+	cout << endl << a;
 }
