@@ -763,5 +763,27 @@ void File18() {/*
 	cout << sum;*/
 	// Писать запятые, а не точки.
 
-
+	ifstream file("numbers.csv");
+	if (file.is_open()) {
+		string line;
+		vector<double> numbers;
+		while (std::getline(file, line)) {
+			stringstream ss(line);
+			while (ss >> number) {
+				numbers.push_back(number);
+				if (ss.peek() == ',') {
+					ss.ignore();
+				}
+			}
+		}
+	}
+	file.close();
+	
+	if (!numbers.empty()) {
+		double sum = 0.0;
+		for (const auto& num : numbers) {
+			sum += num;
+		}
+		double average = sum / numbers.size();
+	}
 }
