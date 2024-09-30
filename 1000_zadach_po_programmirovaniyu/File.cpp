@@ -121,6 +121,12 @@ void File(bool tr, int begin)
 			cout << endl << endl;
 			break;
 
+		case 18:
+			File18();
+
+			cout << endl << endl;
+			break;
+
 		default:
 			cout << "Задача отсутствует.";
 			cout << endl << endl;
@@ -726,4 +732,36 @@ void File17() {
 	file3.close();
 
 	cout << endl << a;
+}
+
+void File18() {/*
+	double sum = 0;
+	int count = 0;
+	double a;
+	string filename = "example.csv";
+
+	ofstream f(filename, ios_base::trunc);
+	f.close();
+	ofstream file(filename, ios_base::app);
+
+	cout << "Введите: ";
+	//getline(cin, a, ';');
+	for (int i = 0; [i] < a; i++) {
+		cin >> a;
+		file << a;
+	}
+
+	file.close();
+	ifstream file1(filename, ios_base::app);
+	getline(file1, a, ';');
+	file1.close();
+
+	for (int i = 1; i < size(a); i++) {
+
+	}
+
+	cout << sum;*/
+	// Писать запятые, а не точки.
+
+
 }
