@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <sstream>
 //#include <filesystem>
 #include <string>
 #include <vector>
@@ -734,56 +735,6 @@ void File17() {
 	cout << endl << a;
 }
 
-void File18() {/*
-	double sum = 0;
-	int count = 0;
-	double a;
-	string filename = "example.csv";
-
-	ofstream f(filename, ios_base::trunc);
-	f.close();
-	ofstream file(filename, ios_base::app);
-
-	cout << "¬ведите: ";
-	//getline(cin, a, ';');
-	for (int i = 0; [i] < a; i++) {
-		cin >> a;
-		file << a;
-	}
-
-	file.close();
-	ifstream file1(filename, ios_base::app);
-	getline(file1, a, ';');
-	file1.close();
-
-	for (int i = 1; i < size(a); i++) {
-
-	}
-
-	cout << sum;*/
+void File18() {
 	// ѕисать зап€тые, а не точки.
-
-	ifstream file("numbers.csv");
-	if (file.is_open()) {
-		string line;
-		vector<double> numbers;
-		while (std::getline(file, line)) {
-			stringstream ss(line);
-			while (ss >> number) {
-				numbers.push_back(number);
-				if (ss.peek() == ',') {
-					ss.ignore();
-				}
-			}
-		}
-	}
-	file.close();
-	
-	if (!numbers.empty()) {
-		double sum = 0.0;
-		for (const auto& num : numbers) {
-			sum += num;
-		}
-		double average = sum / numbers.size();
-	}
 }
