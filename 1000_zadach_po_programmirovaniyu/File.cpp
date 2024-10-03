@@ -146,6 +146,12 @@ void File(bool tr, int begin)
 			cout << endl << endl;
 			break;
 
+		case 22:
+			File22();
+
+			cout << endl << endl;
+			break;
+
 		default:
 			cout << "Задача отсутствует.";
 			cout << endl << endl;
@@ -864,7 +870,7 @@ void File21() {
 	file.close();
 
 	ifstream file1(filename);
-	ofstream file2(filename, ios_base::out | ios_base::trunc);
+	ofstream file2(filename1, ios_base::out | ios_base::trunc);
 	if (file1.is_open() && file2.is_open()) {
 		while (file1 >> a) {
 			i++;
@@ -879,10 +885,52 @@ void File21() {
 	file1.close();
 	file2.close();
 
-	ifstream file3(filename);
+	ifstream file3(filename1);
 	if (file3.is_open()) {
 		while (file3 >> a) {
 			cout << a << endl;
 		}
 	}
+	file3.close();
+}
+
+void File22() {
+	int i = 0;
+	double a = 0, a1 = 0, a2 = 0, a3 = 0;
+	string filename = "example.txt";
+	string filename1 = "example1.txt";
+
+	ofstream file(filename, ios_base::out | ios_base::trunc);
+	while (a != -100.00) {
+		cin >> a;
+		if (a != -100.00) {
+			file << a;
+			file << ' ';
+		}
+	}
+	file.close();
+
+	ifstream file1(filename);
+	ofstream file2(filename1, ios_base::out | ios_base::trunc);
+	if (file1.is_open() && file2.is_open()) {
+		while (file1 >> a) {
+			i++;
+			a3 = a2;
+			a2 = a1;
+			a1 = a;
+			if ((a2 < a1 && a2 < a3) || (a2 > a1 && a2 > a3) && i > 2) {
+				file2 << i;
+			}
+		}
+	}
+	file1.close();
+	file2.close();
+
+	ifstream file3(filename1);
+	if (file3.is_open()) {
+		while (file3 >> a) {
+			cout << a << endl;
+		}
+	}
+	file3.close();
 }
