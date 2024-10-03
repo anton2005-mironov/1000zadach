@@ -904,13 +904,16 @@ void File22() {
 	while (a != -100.00) {
 		cin >> a;
 		if (a != -100.00) {
+			i++;
 			file << a;
 			file << ' ';
 		}
 	}
 	file.close();
 
-	ifstream file1(filename);
+	double* a = new double [m];
+
+	/*ifstream file1(filename);
 	ofstream file2(filename1, ios_base::out | ios_base::trunc);
 	if (file1.is_open() && file2.is_open()) {
 		while (file1 >> a) {
@@ -932,5 +935,5 @@ void File22() {
 			cout << a << endl;
 		}
 	}
-	file3.close();
+	file3.close();*/
 }
