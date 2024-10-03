@@ -139,7 +139,7 @@ void File(bool tr, int begin)
 void File1() {
 	int a = 1;
 	string filename = "example.txt";
-	string forbiddenCharacters = "/\:*?<>|";
+	string forbiddenCharacters = "/*?<>|";
 	for (char c : filename) {
 		if (forbiddenCharacters.find(c) != string::npos) {
 			a = 0;
@@ -430,7 +430,7 @@ void File11() {
 	getline(file11, b);
 	file11.close();
 
-	for (int i = 0; i < size(b); i++) {
+	for (unsigned int i = 0; i < size(b); i++) {
 		cout << b[i];
 	}
 
@@ -449,7 +449,7 @@ void File11() {
 	file22.close();
 
 	cout << endl;
-	for (int i = 0; i < size(b); i++) {
+	for (unsigned int i = 0; i < size(b); i++) {
 		cout << b[i];
 	}
 }
@@ -490,7 +490,7 @@ void File12() {
 	getline(file11, b);
 	file11.close();
 
-	for (int i = 0; i < size(b); i++) {
+	for (unsigned int i = 0; i < size(b); i++) {
 		cout << b[i];
 	}
 
@@ -511,7 +511,7 @@ void File12() {
 	file22.close();
 
 	cout << endl;
-	for (int i = 0; i < size(b); i++) {
+	for (unsigned int i = 0; i < size(b); i++) {
 		cout << b[i];
 	}
 }
@@ -561,7 +561,7 @@ void File13() {
 	getline(file11, b);
 	file11.close();
 
-	for (int i = 0; i < size(b); i++) {
+	for (unsigned int i = 0; i < size(b); i++) {
 		cout << b[i] << ' ';
 	}
 
@@ -589,7 +589,7 @@ void File13() {
 	file22.close();
 
 	cout << endl;
-	for (int i = 0; i < size(b); i++) {
+	for (unsigned int i = 0; i < size(b); i++) {
 		cout << b[i] << ' ';
 	}
 }
@@ -614,7 +614,7 @@ void File14() {
 	getline(file1, a, ';');
 	file1.close();
 
-	for (int i = 1; i < size(a); i++) {
+	for (unsigned int i = 1; i < size(a); i++) {
 		b = "";
 		while (i < size(a) && a[i] != ' ') {
 			b += a[i];
@@ -649,7 +649,7 @@ void File15() {
 	getline(file1, a, ';');
 	file1.close();
 
-	for (int i = 1; i < size(a); i++) {
+	for (unsigned int i = 1; i < size(a); i++) {
 		b = "";
 		while (i < size(a) && a[i] != ' ') {
 			b += a[i];
@@ -685,7 +685,7 @@ void File16() {
 	getline(file1, a, ';');
 	file1.close();
 
-	for (int i = 2; i < size(a); i++) {
+	for (unsigned int i = 2; i < size(a); i++) {
 		if (a[i] != a[i - 1]) {
 			count++;
 		}
@@ -718,7 +718,7 @@ void File17() {
 	f2.close();
 	ofstream file2(filename2, ios_base::app);
 
-	for (int i = 1; i < size(a); i++) {
+	for (unsigned int i = 1; i < size(a); i++) {
 		if (a[i] != a[i - 1]) {
 			count++;
 		}
@@ -736,5 +736,31 @@ void File17() {
 }
 
 void File18() {
-	// Писать запятые, а не точки.
+	int i = 0;
+	double a = 0, a1 = 0, a2 = 0, a3 = 0;
+	string filename = "example.txt";
+
+	ofstream file(filename, ios_base::out | ios_base::trunc);
+	while (a != -100.00) {
+		cin >> a;
+		if (a != -100.00) {
+			file << a;
+			file << ' ';
+		}
+	}
+	file.close();
+
+	ifstream file1(filename);
+	if (file1.is_open()) {
+		while (file1 >> a) {
+			i++;
+			a3 = a2;
+			a2 = a1;
+			a1 = a;
+			if (a2 < a1 && a2 < a3 && i > 2) {
+				break;
+			}
+		}
+	}
+	file1.close();
 }
