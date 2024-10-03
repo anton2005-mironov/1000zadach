@@ -128,6 +128,24 @@ void File(bool tr, int begin)
 			cout << endl << endl;
 			break;
 
+		case 19:
+			File19();
+
+			cout << endl << endl;
+			break;
+
+		case 20:
+			File20();
+
+			cout << endl << endl;
+			break;
+
+		case 21:
+			File21();
+
+			cout << endl << endl;
+			break;
+
 		default:
 			cout << "Задача отсутствует.";
 			cout << endl << endl;
@@ -763,4 +781,108 @@ void File18() {
 		}
 	}
 	file1.close();
+
+	cout << a2;
+}
+
+void File19() {
+	int i = 0, g = 0;
+	double a = 0, a1 = 0, a2 = 0, a3 = 0;
+	string filename = "example.txt";
+
+	ofstream file(filename, ios_base::out | ios_base::trunc);
+	while (a != -100.00) {
+		cin >> a;
+		if (a != -100.00) {
+			file << a;
+			file << ' ';
+		}
+	}
+	file.close();
+
+	ifstream file1(filename);
+	if (file1.is_open()) {
+		while (file1 >> a) {
+			i++;
+			a3 = a2;
+			a2 = a1;
+			a1 = a;
+			if (a2 > a1 && a2 > a3 && i > 2) {
+				g = a2;
+			}
+		}
+	}
+	file1.close();
+	cout << g;
+}
+
+void File20() {
+	int i = 0, g = 0;
+	double a = 0, a1 = 0, a2 = 0, a3 = 0;
+	string filename = "example.txt";
+
+	ofstream file(filename, ios_base::out | ios_base::trunc);
+	while (a != -100.00) {
+		cin >> a;
+		if (a != -100.00) {
+			file << a;
+			file << ' ';
+		}
+	}
+	file.close();
+
+	ifstream file1(filename);
+	if (file1.is_open()) {
+		while (file1 >> a) {
+			i++;
+			a3 = a2;
+			a2 = a1;
+			a1 = a;
+			if ((a2 < a1 && a2 < a3) || (a2 > a1 && a2 > a3) && i > 2) {
+				g++;
+			}
+		}
+	}
+	file1.close();
+	cout << g;
+}
+
+void File21() {
+	int i = 0;
+	double a = 0, a1 = 0, a2 = 0, a3 = 0;
+	string filename = "example.txt";
+	string filename1 = "example1.txt";
+
+	ofstream file(filename, ios_base::out | ios_base::trunc);
+	while (a != -100.00) {
+		cin >> a;
+		if (a != -100.00) {
+			file << a;
+			file << ' ';
+		}
+	}
+	file.close();
+
+	ifstream file1(filename);
+	ofstream file2(filename, ios_base::out | ios_base::trunc);
+	if (file1.is_open() && file2.is_open()) {
+		while (file1 >> a) {
+			i++;
+			a3 = a2;
+			a2 = a1;
+			a1 = a;
+			if (a2 > a1 && a2 > a3 && i > 2) {
+				file2 << i;
+			}
+		}
+	}
+	file1.close();
+	file2.close();
+
+	ifstream file3(filename);
+	if (file3.is_open()) {
+		while (file3 >> a) {
+			cout << a << endl;
+		}
+	}
 }

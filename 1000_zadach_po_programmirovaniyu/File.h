@@ -18,5 +18,8 @@ void File15();
 void File16();
 void File17();
 void File18();
+void File19();
+void File20();
+void File21();
 
 void File(bool tr, int begin);
