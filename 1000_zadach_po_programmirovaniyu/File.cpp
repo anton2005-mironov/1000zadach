@@ -164,6 +164,18 @@ void File(bool tr, int begin)
 			cout << endl << endl;
 			break;
 
+		case 25:
+			File25();
+
+			cout << endl << endl;
+			break;
+
+		case 26:
+			File26();
+
+			cout << endl << endl;
+			break;
+
 		default:
 			cout << "Задача отсутствует.";
 			cout << endl << endl;
@@ -1051,22 +1063,20 @@ void File24() {
 			}
 			else {
 				p = 1;
-				count++;
 				file2 << count;
 				file2 << ' ';
-				count = 1;
+				count = 2;
 			}
 		}
-		if (p == 1) {
-			if (array[j] < array[j - 1]) {
+		else if (p == 1) {
+			if (array[j] > array[j - 1]) {
 				count++;
 			}
 			else {
 				p = 0;
-				count++;
 				file2 << count;
 				file2 << ' ';
-				count = 1;
+				count = 2;
 			}
 		}
 	}
@@ -1076,6 +1086,109 @@ void File24() {
 	delete[] array;
 
 	ifstream file3(filename1);
+	if (file3.is_open()) {
+		while (file3 >> a) {
+			cout << a << endl;
+		}
+	}
+	file3.close();
+}
+
+void File25() {
+	int i = 0;
+	double a = 0;
+	string filename = "example.txt";
+
+	ofstream file(filename, ios_base::out | ios_base::trunc);
+	while (a != -100) {
+		cin >> a;
+		if (a != -100) {
+			i++;
+			file << a;
+			file << ' ';
+		}
+	}
+	file.close();
+
+	double* array = new double[i];
+	i = 0;
+
+	ifstream file1(filename);
+	if (file1.is_open()) {
+		while (file1 >> array[i]) {
+			i++;
+		}
+	}
+	file1.close();
+
+	for (int j = 0; j < i; j++) {
+		array[j] *= array[j];
+	}
+
+	ofstream file2(filename, ios_base::out | ios_base::trunc);
+	for (int j = 0; j < i; j++) {
+		file2 << array[j];
+		file2 << ' ';
+	}
+	file2.close();
+	delete[] array;
+
+	ifstream file3(filename);
+	if (file3.is_open()) {
+		while (file3 >> a) {
+			cout << a << endl;
+		}
+	}
+	file3.close();
+}
+
+void File26() {
+	int i = 0;
+	double a = 0, max, min;
+	string filename = "example.txt";
+
+	ofstream file(filename, ios_base::out | ios_base::trunc);
+	while (a != -100) {
+		cin >> a;
+		if (a != -100) {
+			i++;
+			file << a;
+			file << ' ';
+		}
+	}
+	file.close();
+
+	double* array = new double[i];
+	i = 0;
+
+	ifstream file1(filename);
+	if (file1.is_open()) {
+		while (file1 >> array[i]) {
+			i++;
+		}
+	}
+	file1.close();
+
+	max = array[0];
+	min = array[0];
+	for (int j = 0; j < i; j++) {
+		if (array[j] < min) {
+			min = array[j];
+		}
+		if (array[j] > max) {
+			max = array[j];
+		}
+	}
+
+	ofstream file2(filename, ios_base::out | ios_base::trunc);
+	for (int j = 0; j < i; j++) {
+		file2 << array[j];
+		file2 << ' ';
+	}
+	file2.close();
+	delete[] array;
+
+	ifstream file3(filename);
 	if (file3.is_open()) {
 		while (file3 >> a) {
 			cout << a << endl;
