@@ -176,6 +176,12 @@ void File(bool tr, int begin)
 			cout << endl << endl;
 			break;
 
+		case 27:
+			File27();
+
+			cout << endl << endl;
+			break;
+
 		default:
 			cout << "Задача отсутствует.";
 			cout << endl << endl;
@@ -1178,6 +1184,106 @@ void File26() {
 		if (array[j] > max) {
 			max = array[j];
 		}
+	}
+
+	ofstream file2(filename, ios_base::out | ios_base::trunc);
+	for (int j = 0; j < i; j++) {
+		file2 << array[j];
+		file2 << ' ';
+	}
+	file2.close();
+	delete[] array;
+
+	ifstream file3(filename);
+	if (file3.is_open()) {
+		while (file3 >> a) {
+			cout << a << endl;
+		}
+	}
+	file3.close();
+}
+
+void File27() {
+	int i = 0;
+	double a = 0;
+	string filename = "example.txt";
+
+	ofstream file(filename, ios_base::out | ios_base::trunc);
+	while (a != -100) {
+		cin >> a;
+		if (a != -100) {
+			i++;
+			file << a;
+			file << ' ';
+		}
+	}
+	file.close();
+
+	double* array = new double[i];
+	i = 0;
+
+	ifstream file1(filename);
+	if (file1.is_open()) {
+		while (file1 >> array[i]) {
+			i++;
+		}
+	}
+	file1.close();
+
+	i--;
+	for (int j = 0; j <= i; j++) {
+		a = array[j];
+		array[j] = array[i];
+		array[i] = a;
+	}
+
+	ofstream file2(filename, ios_base::out | ios_base::trunc);
+	for (int j = 0; j < i; j++) {
+		file2 << array[j];
+		file2 << ' ';
+	}
+	file2.close();
+	delete[] array;
+
+	ifstream file3(filename);
+	if (file3.is_open()) {
+		while (file3 >> a) {
+			cout << a << endl;
+		}
+	}
+	file3.close();
+}
+
+void File28() {
+	int i = 0;
+	double a = 0;
+	string filename = "example.txt";
+
+	ofstream file(filename, ios_base::out | ios_base::trunc);
+	while (a != -100) {
+		cin >> a;
+		if (a != -100) {
+			i++;
+			file << a;
+			file << ' ';
+		}
+	}
+	file.close();
+
+	double* array = new double[i];
+	i = 0;
+
+	ifstream file1(filename);
+	if (file1.is_open()) {
+		while (file1 >> array[i]) {
+			i++;
+		}
+	}
+	file1.close();
+
+	for (int j = 1; j < i -1; j++) {
+		array[j] += array[j - 1] + array[j + 1];
+		array[j] /= 3;
 	}
 
 	ofstream file2(filename, ios_base::out | ios_base::trunc);
