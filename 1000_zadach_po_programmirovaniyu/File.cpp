@@ -792,8 +792,8 @@ void File18() {
 }
 
 void File19() {
-	int i = 0, g = 0;
-	double a = 0, a1 = 0, a2 = 0, a3 = 0;
+	int i = 0;
+	double a = 0, a1 = 0, a2 = 0, a3 = 0, g = 0;
 	string filename = "example.txt";
 
 	ofstream file(filename, ios_base::out | ios_base::trunc);
@@ -911,23 +911,26 @@ void File22() {
 	}
 	file.close();
 
-	double* a = new double [m];
+	double* array = new double [i];
+	i = 0;
 
-	/*ifstream file1(filename);
-	ofstream file2(filename1, ios_base::out | ios_base::trunc);
-	if (file1.is_open() && file2.is_open()) {
-		while (file1 >> a) {
+	ifstream file1(filename);
+	if (file1.is_open()) {
+		while (file1 >> array[i]) {
 			i++;
-			a3 = a2;
-			a2 = a1;
-			a1 = a;
-			if ((a2 < a1 && a2 < a3) || (a2 > a1 && a2 > a3) && i > 2) {
-				file2 << i;
-			}
 		}
 	}
 	file1.close();
+
+	ofstream file2(filename1, ios_base::out | ios_base::trunc);
+	for (int j = i - 1; j > 0; j--) {
+		if ((array[j] < array[j + 1] && array[j] < array[j - 1]) || (array[j] > array[j + 1] && array[j] > array[j - 1])) {
+			file2 << j + 1;
+		}
+	}
 	file2.close();
+
+	delete[] array;
 
 	ifstream file3(filename1);
 	if (file3.is_open()) {
@@ -935,5 +938,5 @@ void File22() {
 			cout << a << endl;
 		}
 	}
-	file3.close();*/
+	file3.close();
 }
