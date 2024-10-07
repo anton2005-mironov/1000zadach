@@ -242,6 +242,30 @@ void File(bool tr, int begin)
 			cout << endl << endl;
 			break;
 
+		case 38:
+			File38();
+
+			cout << endl << endl;
+			break;
+
+		case 39:
+			File39();
+
+			cout << endl << endl;
+			break;
+
+		case 40:
+			File40();
+
+			cout << endl << endl;
+			break;
+
+		case 41:
+			File41();
+
+			cout << endl << endl;
+			break;
+
 		default:
 			cout << "Задача отсутствует.";
 			cout << endl << endl;
@@ -1765,6 +1789,202 @@ void File37() {
 	for (int j = i - 1; j >= 0; j--) {
 		file2 << array[j];
 		file2 << ' ';
+	}
+	file2.close();
+	delete[] array;
+
+	ifstream file3(filename);
+	if (file3.is_open()) {
+		while (file3 >> a) {
+			cout << a << endl;
+		}
+	}
+	file3.close();
+}
+
+void File38() {
+	int i = 0;
+	int a = 0;
+	string filename = "example.txt";
+
+	ofstream file(filename, ios_base::out | ios_base::trunc);
+	while (a != -100) {
+		cin >> a;
+		if (a != -100) {
+			i++;
+			file << a;
+			file << ' ';
+		}
+	}
+	file.close();
+
+	double* array = new double[i];
+	i = 0;
+
+	ifstream file1(filename);
+	if (file1.is_open()) {
+		while (file1 >> array[i]) {
+			i++;
+		}
+	}
+	file1.close();
+
+	ofstream file2(filename, ios_base::out | ios_base::trunc);
+	for (int j = 0; j < i; j++) {
+		file2 << array[j];
+		file2 << ' ';
+		if (j % 2 == 0 || j = 0) {
+			file2 << array[j];
+			file2 << ' ';
+		}
+	}
+	file2.close();
+	delete[] array;
+
+	ifstream file3(filename);
+	if (file3.is_open()) {
+		while (file3 >> a) {
+			cout << a << endl;
+		}
+	}
+	file3.close();
+}
+
+void File39() {
+	int i = 0;
+	int a = 0;
+	string filename = "example.txt";
+
+	ofstream file(filename, ios_base::out | ios_base::trunc);
+	while (a != -100) {
+		cin >> a;
+		if (a != -100) {
+			i++;
+			file << a;
+			file << ' ';
+		}
+	}
+	file.close();
+
+	double* array = new double[i];
+	i = 0;
+
+	ifstream file1(filename);
+	if (file1.is_open()) {
+		while (file1 >> array[i]) {
+			i++;
+		}
+	}
+	file1.close();
+
+	ofstream file2(filename, ios_base::out | ios_base::trunc);
+	for (int j = 0; j < i; j++) {
+		file2 << array[j];
+		file2 << ' ';
+		if (j >= 5 && j <= 10) {
+			file2 << array[j];
+			file2 << ' ';
+		}
+	}
+	file2.close();
+	delete[] array;
+
+	ifstream file3(filename);
+	if (file3.is_open()) {
+		while (file3 >> a) {
+			cout << a << endl;
+		}
+	}
+	file3.close();
+}
+
+void File40() {
+	int i = 0;
+	int a = 0;
+	string filename = "example.txt";
+
+	ofstream file(filename, ios_base::out | ios_base::trunc);
+	while (a != -100) {
+		cin >> a;
+		if (a != -100) {
+			i++;
+			file << a;
+			file << ' ';
+		}
+	}
+	file.close();
+
+	double* array = new double[i];
+	i = 0;
+
+	ifstream file1(filename);
+	if (file1.is_open()) {
+		while (file1 >> array[i]) {
+			i++;
+		}
+	}
+	file1.close();
+
+	ofstream file2(filename, ios_base::out | ios_base::trunc);
+	for (int j = 0; j < i; j++) {
+		if (j % 2 == 0 || j == 0) {
+			file2 << array[j];
+			file2 << ' ';
+		}
+		else {
+			file2 << "00";
+			file2 << ' ';
+		}
+	}
+	file2.close();
+	delete[] array;
+
+	ifstream file3(filename);
+	if (file3.is_open()) {
+		while (file3 >> a) {
+			cout << a << endl;
+		}
+	}
+	file3.close();
+}
+
+void File41() {
+	int i = 0;
+	int a = 0;
+	string filename = "example.txt";
+
+	ofstream file(filename, ios_base::out | ios_base::trunc);
+	while (a != -100) {
+		cin >> a;
+		if (a != -100) {
+			i++;
+			file << a;
+			file << ' ';
+		}
+	}
+	file.close();
+
+	double* array = new double[i];
+	i = 0;
+
+	ifstream file1(filename);
+	if (file1.is_open()) {
+		while (file1 >> array[i]) {
+			i++;
+		}
+	}
+	file1.close();
+
+	ofstream file2(filename, ios_base::out | ios_base::trunc);
+	for (int j = 0; j < i; j++) {
+		if (!(array[j] > 0)) {
+			file2 << array[j];
+			file2 << ' ';
+		}
+		else {
+			file2 << "000";
+			file2 << ' ';
+		}
 	}
 	file2.close();
 	delete[] array;
