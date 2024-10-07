@@ -30,5 +30,7 @@ void File27();
 void File28();
 void File29();
 void File30();
+void File31();
+void File32();
 
 void File(bool tr, int begin);
