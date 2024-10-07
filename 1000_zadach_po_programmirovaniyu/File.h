@@ -27,5 +27,8 @@ void File24();
 void File25();
 void File26();
 void File27();
+void File28();
+void File29();
+void File30();
 
 void File(bool tr, int begin);
