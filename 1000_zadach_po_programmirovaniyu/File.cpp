@@ -2178,7 +2178,7 @@ void File44() {
 	}
 
 	ifstream filea1(filename[min], ios_base::binary);
-	ofstream filea2(filename[max], ios_base::binary);
+	ofstream filea2(filename[max], ios_base::binary | ios_base::trunc);
 
 	filea2 << filea1.rdbuf();
 
@@ -2275,7 +2275,7 @@ void File45() {
 	}
 
 	ifstream filea1(filename[max], ios_base::binary);
-	ofstream filea2(filename[min], ios_base::binary);
+	ofstream filea2(filename[min], ios_base::binary | ios_base::trunc);
 
 	filea2 << filea1.rdbuf();
 
