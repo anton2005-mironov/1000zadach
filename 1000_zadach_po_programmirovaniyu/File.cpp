@@ -291,6 +291,12 @@ void File(bool tr, int begin)
 			cout << endl << endl;
 			break;
 
+		case 46:
+			File46();
+
+			cout << endl << endl;
+			break;
+
 		default:
 			cout << "Задача отсутствует.";
 			cout << endl << endl;
@@ -2305,4 +2311,38 @@ void File45() {
 		}
 	}
 	file3a.close();
+}
+
+void File46() {
+	int n;
+	cin >> n;
+	string s0 = "example.txt";
+	ofstream f(s0, ios_base::binary | ios_base::trunc);
+
+	int a = 0;
+	for (int i = 1; i <= n; i++) {
+		ofstream file(s0 + to_string(i), ios_base::out | ios_base::trunc);
+		while (a != -100) {
+			cin >> a;
+			if (a != -100) {
+				file << a;
+				file << ' ';
+			}
+		}
+		file.close();
+		ifstream file1(s0 + to_string(i), ios_base::binary);
+
+		f << file1.rdbuf();
+
+		file1.close();
+	}
+	f.close();
+
+	ifstream file2(s0);
+	if (file2.is_open()) {
+		while (file2 >> a) {
+			cout << a << endl;
+		}
+	}
+	file2.close();
 }
