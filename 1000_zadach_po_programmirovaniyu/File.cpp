@@ -2109,7 +2109,6 @@ void File43() {
 
 void File44() {
 	string filename[] = {"example.txt", "example1.txt", "example2.txt"};
-	string time = "time.txt";
 
 	int a = 0;
 	ofstream file(filename[0], ios_base::out | ios_base::trunc);
@@ -2172,29 +2171,110 @@ void File44() {
 		}
 	}
 
-	ofstream time2(time, ios_base::binary);
-	ifstream f2(filename[1], ios_base::binary);
-
-	time2 << f2.rdbuf();
-
-	f2.close();
-	time2.close();
-
-	ifstream filea1(filename[0], ios_base::binary);
-	ofstream filea2(filename[1], ios_base::binary);
+	ifstream filea1(filename[min], ios_base::binary);
+	ofstream filea2(filename[max], ios_base::binary);
 
 	filea2 << filea1.rdbuf();
 
 	filea1.close();
 	filea2.close();
 
-	ifstream time22(time, ios_base::binary);
-	ofstream fileb1(filename[0], ios_base::binary);
+	ifstream file1a(filename[0]);
+	if (file1a.is_open()) {
+		while (file1a >> a) {
+			cout << a << endl;
+		}
+	}
+	file1a.close();
 
-	fileb1 << time22.rdbuf();
+	ifstream file2a(filename[1]);
+	if (file2a.is_open()) {
+		while (file2a >> a) {
+			cout << a << endl;
+		}
+	}
+	file2a.close();
 
-	time22.close();
-	fileb1.close();
+	ifstream file3a(filename[2]);
+	if (file3a.is_open()) {
+		while (file3a >> a) {
+			cout << a << endl;
+		}
+	}
+	file3a.close();
+}
+
+void File45() {
+	string filename[] = { "example.txt", "example1.txt", "example2.txt" };
+
+	int a = 0;
+	ofstream file(filename[0], ios_base::out | ios_base::trunc);
+	while (a != -100) {
+		cin >> a;
+		if (a != -100) {
+			file << a;
+			file << ' ';
+		}
+		else {
+			file.close();
+		}
+	}
+
+	ofstream file1(filename[1], ios_base::out | ios_base::trunc);
+	while (a != -100) {
+		cin >> a;
+		if (a != -100) {
+			file1 << a;
+			file1 << ' ';
+		}
+		else {
+			file1.close();
+		}
+	}
+
+	ofstream file2(filename[2], ios_base::out | ios_base::trunc);
+	while (a != -100) {
+		cin >> a;
+		if (a != -100) {
+			file2 << a;
+			file2 << ' ';
+		}
+		else {
+			file2.close();
+		}
+	}
+
+	int sizes[3];
+
+	struct stat fi;
+	stat(filename[0].c_str(), &fi);
+	sizes[0] = fi.st_size;
+
+	stat(filename[1].c_str(), &fi);
+	sizes[1] = fi.st_size;
+
+	stat(filename[2].c_str(), &fi);
+	sizes[2] = fi.st_size;
+
+	int min = 0;
+	int max = 0;
+
+	for (int i = 1; i < 3; i++) {
+		if (sizes[i] < sizes[min]) {
+			min = i;
+		}
+		if (sizes[i] > sizes[max]) {
+			max = i;
+		}
+	}
+
+	ifstream filea1(filename[max], ios_base::binary);
+	ofstream filea2(filename[min], ios_base::binary);
+
+	filea2 << filea1.rdbuf();
+
+	filea1.close();
+	filea2.close();
 
 	ifstream file1a(filename[0]);
 	if (file1a.is_open()) {
