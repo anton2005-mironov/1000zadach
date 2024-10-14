@@ -285,6 +285,12 @@ void File(bool tr, int begin)
 			cout << endl << endl;
 			break;
 
+		case 45:
+			File45();
+
+			cout << endl << endl;
+			break;
+
 		default:
 			cout << "Задача отсутствует.";
 			cout << endl << endl;
