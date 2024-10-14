@@ -2018,11 +2018,11 @@ void File41() {
 }
 
 void File42() {
-	char filename[3][14] = {"example.txt", "example1.txt"};
-	char name[14] = "example.txt";
+	string filename = "example.txt", filename1 = "example1.txt";
+	string name = "example.txt";
 
 	int a = 0;
-	ofstream file(filename[0], ios_base::out | ios_base::trunc);
+	ofstream file(filename, ios_base::out | ios_base::trunc);
 	while (a != -100) {
 		cin >> a;
 		if (a != -100) {
@@ -2035,7 +2035,7 @@ void File42() {
 	}
 	a = 0;
 
-	ofstream file1(filename[1], ios_base::out | ios_base::trunc);
+	ofstream file1(filename1, ios_base::out | ios_base::trunc);
 	while (a != -100) {
 		cin >> a;
 		if (a != -100) {
@@ -2047,14 +2047,17 @@ void File42() {
 		}
 	}
 
-	if (rename(filename[0], filename[1]) != 0) {
-
+	if (rename(filename.c_str(), name.c_str()) != 0) {
+		cout << "Ошибка при переименовании файла " << filename << "\n";
 	}
-	if (rename(filename[1], name) != 0) {
-
+	if (rename(filename1.c_str(), filename.c_str()) != 0) {
+		cout << "Ошибка при переименовании файла " << filename1 << "\n";
+	}
+	if (rename(name.c_str(), filename1.c_str()) != 0) {
+		cout << "Ошибка при переименовании временного файла. \n";
 	}
 
-	ifstream file2(filename[0]);
+	ifstream file2(filename);
 	if (file2.is_open()) {
 		while (file2 >> a) {
 			cout << a << endl;
@@ -2062,7 +2065,7 @@ void File42() {
 	}
 	file2.close();
 
-	ifstream file3(filename[1]);
+	ifstream file3(filename1);
 	if (file3.is_open()) {
 		while (file3 >> a) {
 			cout << a << endl;
@@ -2073,11 +2076,10 @@ void File42() {
 
 void File43() {
 	int a = 0;
-	char filename[2][14] = {"example.txt", "example1.txt"};
+	string filename = "example.txt", filename1 = "example1.txt";
 
-	int q = 0;
-	ofstream file(filename[q], ios_base::out | ios_base::trunc);
-	while (q < 2) {
+	ofstream file(filename, ios_base::out | ios_base::trunc);
+	while (a != -100) {
 		cin >> a;
 		if (a != -100) {
 			file << a;
@@ -2085,10 +2087,6 @@ void File43() {
 		}
 		else {
 			file.close();
-			q++;
-			if (q < 2) {
-				ofstream file(filename[q], ios_base::out | ios_base::trunc);
-			}
 		}
 	}
 
@@ -2100,17 +2098,13 @@ void File43() {
 	file1.close();
 	file2.close();
 
-	q = 0;
-	while (q < 2) {
-		ifstream file1(filename[q]);
-		if (file1.is_open()) {
-			while (file1 >> a) {
-				cout << a << endl;
-			}
+	ifstream file1(filename[q]);
+	if (file1.is_open()) {
+		while (file1 >> a) {
+			cout << a << endl;
 		}
-		file1.close();
-		q++;
 	}
+	file1.close();
 }
 
 void File44() {
@@ -2158,13 +2152,7 @@ void File44() {
 		}
 	}
 
-	ifstream fileMin(filename[min], ios_base::binary);
-	ofstream fileMax(filename[max], ios_base::binary);
-
-	fileMax << fileMin.rdbuf();
-
-	fileMin.close();
-	fileMax.close();
+	
 
 	q = 0;
 	while (q < 3) {
