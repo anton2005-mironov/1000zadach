@@ -2098,22 +2098,22 @@ void File43() {
 	file1.close();
 	file2.close();
 
-	ifstream file1(filename[q]);
-	if (file1.is_open()) {
-		while (file1 >> a) {
+	ifstream file1a(filename1);
+	if (file1a.is_open()) {
+		while (file1a >> a) {
 			cout << a << endl;
 		}
 	}
-	file1.close();
+	file1a.close();
 }
 
 void File44() {
-	char filename[3][14] = {"example.txt", "example1.txt", "example2.txt"};
+	string filename[] = {"example.txt", "example1.txt", "example2.txt"};
+	string time = "time.txt";
 
 	int a = 0;
-	int q = 0;
-	ofstream file(filename[q], ios_base::out | ios_base::trunc);
-	while (q < 3) {
+	ofstream file(filename[0], ios_base::out | ios_base::trunc);
+	while (a != -100) {
 		cin >> a;
 		if (a != -100) {
 			file << a;
@@ -2121,23 +2121,43 @@ void File44() {
 		}
 		else {
 			file.close();
-			q++;
-			if (q < 3) {
-				ofstream file(filename[q], ios_base::out | ios_base::trunc);
-			}
+		}
+	}
+
+	ofstream file1(filename[1], ios_base::out | ios_base::trunc);
+	while (a != -100) {
+		cin >> a;
+		if (a != -100) {
+			file1 << a;
+			file1 << ' ';
+		}
+		else {
+			file1.close();
+		}
+	}
+
+	ofstream file2(filename[2], ios_base::out | ios_base::trunc);
+	while (a != -100) {
+		cin >> a;
+		if (a != -100) {
+			file2 << a;
+			file2 << ' ';
+		}
+		else {
+			file2.close();
 		}
 	}
 
 	int sizes[3];
 
 	struct stat fi;
-	stat(filename[0], &fi);
+	stat(filename[0].c_str(), &fi);
 	sizes[0] = fi.st_size;
 
-	stat(filename[1], &fi);
+	stat(filename[1].c_str(), &fi);
 	sizes[1] = fi.st_size;
 
-	stat(filename[2], &fi);
+	stat(filename[2].c_str(), &fi);
 	sizes[2] = fi.st_size;
 
 	int min = 0;
@@ -2152,17 +2172,51 @@ void File44() {
 		}
 	}
 
-	
+	ofstream time2(time, ios_base::binary);
+	ifstream f2(filename[1], ios_base::binary);
 
-	q = 0;
-	while (q < 3) {
-		ifstream file1(filename[q]);
-		if (file1.is_open()) {
-			while (file1 >> a) {
-				cout << a << endl;
-			}
+	time2 << f2.rdbuf();
+
+	f2.close();
+	time2.close();
+
+	ifstream filea1(filename[0], ios_base::binary);
+	ofstream filea2(filename[1], ios_base::binary);
+
+	filea2 << filea1.rdbuf();
+
+	filea1.close();
+	filea2.close();
+
+	ifstream time22(time, ios_base::binary);
+	ofstream fileb1(filename[0], ios_base::binary);
+
+	fileb1 << time22.rdbuf();
+
+	time22.close();
+	fileb1.close();
+
+	ifstream file1a(filename[0]);
+	if (file1a.is_open()) {
+		while (file1a >> a) {
+			cout << a << endl;
 		}
-		file1.close();
-		q++;
 	}
+	file1a.close();
+
+	ifstream file2a(filename[1]);
+	if (file2a.is_open()) {
+		while (file2a >> a) {
+			cout << a << endl;
+		}
+	}
+	file2a.close();
+
+	ifstream file3a(filename[2]);
+	if (file3a.is_open()) {
+		while (file3a >> a) {
+			cout << a << endl;
+		}
+	}
+	file3a.close();
 }
