@@ -2090,8 +2090,8 @@ void File43() {
 		}
 	}
 
-	ifstream file1(filename[0], ios_base::binary);
-	ofstream file2(filename[1], ios_base::binary);
+	ifstream file1(filename, ios_base::binary);
+	ofstream file2(filename1, ios_base::binary);
 
 	file2 << file1.rdbuf();
 
