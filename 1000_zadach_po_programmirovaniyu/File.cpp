@@ -321,6 +321,12 @@ void File(bool tr, int begin)
 			cout << endl << endl;
 			break;
 
+		case 51:
+			File51();
+
+			cout << endl << endl;
+			break;
+
 		default:
 			cout << "Задача отсутствует.";
 			cout << endl << endl;
@@ -2629,6 +2635,83 @@ void File50() {
 
 	for (int i = 1; i <= p; i++) {
 		if (array[i] < array[i - 1]) {
+			a = array[i];
+			array[i] = array[i - 1];
+			array[i - 1] = a;
+			if (i != 1) {
+				i -= 2;
+			}
+		}
+	}
+
+	ofstream fileD1(S3, ios_base::out | ios_base::trunc);
+	for (int i = 0; i <= p; i++) {
+		fileD1 << array[i] << ' ';
+	}
+	fileD1.close();
+
+	ifstream fileD(S3);
+	if (fileD.is_open()) {
+		while (fileD >> a) {
+			cout << a << endl;
+		}
+	}
+	fileD.close();
+}
+
+void File51() {
+	int q = 0;
+	string S1 = "example1.txt", S2 = "example2.txt";
+	string S3 = "example.txt";
+
+	double a = 0, b = 0;
+	ofstream fileA1(S1, ios_base::out | ios_base::trunc);
+	while (a != -100) {
+		cin >> a;
+		if (a != -100) {
+			fileA1 << ' ';
+			fileA1 << a;
+			q++;
+		}
+		else {
+			fileA1.close();
+		}
+	}
+
+	ofstream fileC1(S2, ios_base::out | ios_base::trunc);
+	while (b != -100) {
+		cin >> b;
+		if (b != -100) {
+			fileC1 << ' ';
+			fileC1 << b;
+			q++;
+		}
+		else {
+			fileC1.close();
+		}
+	}
+
+	double* array = new double[q];
+
+	ifstream fileA2(S1);
+	ifstream fileB2(S2);
+
+	int p = 0;
+	while (fileA2 >> a) {
+		array[p] = a;
+		p++;
+	}
+	while (fileB2 >> b) {
+		array[p] = b;
+		p++;
+	}
+	p--;
+
+	fileA2.close();
+	fileB2.close();
+
+	for (int i = 1; i <= p; i++) {
+		if (array[i] > array[i - 1]) {
 			a = array[i];
 			array[i] = array[i - 1];
 			array[i - 1] = a;
