@@ -2577,6 +2577,7 @@ void File49() {
 }
 
 void File50() {
+	int q = 0;
 	string S1 = "example1.txt", S2 = "example2.txt";
 	string S3 = "example.txt";
 
@@ -2587,6 +2588,7 @@ void File50() {
 		if (a != -100) {
 			fileA1 << ' ';
 			fileA1 << a;
+			q++;
 		}
 		else {
 			fileA1.close();
@@ -2599,31 +2601,47 @@ void File50() {
 		if (b != -100) {
 			fileC1 << ' ';
 			fileC1 << b;
+			q++;
 		}
 		else {
 			fileC1.close();
 		}
 	}
 
+	double* array = new double[q];
+
 	ifstream fileA2(S1);
 	ifstream fileB2(S2);
-	ofstream fileD1(S3, ios_base::out | ios_base::trunc);
 
-	fileA2 >> a, fileB2 >> b;
-
-	while (!fileA2.eof() && !fileB2.eof()) {
-		if (a <= b) {
-			fileD1 << b;
-			fileA2 >> a;
-		}
-		else {
-			fileD1 << a;
-			fileA2 >> b;
-		}
+	int p = 0;
+	while (fileA2 >> a) {
+		array[p] = a;
+		p++;
 	}
+	while (fileB2 >> b) {
+		array[p] = b;
+		p++;
+	}
+	p--;
 
 	fileA2.close();
 	fileB2.close();
+
+	for (int i = 1; i <= p; i++) {
+		if (array[i] < array[i - 1]) {
+			a = array[i];
+			array[i] = array[i - 1];
+			array[i - 1] = a;
+			if (i != 1) {
+				i -= 2;
+			}
+		}
+	}
+
+	ofstream fileD1(S3, ios_base::out | ios_base::trunc);
+	for (int i = 0; i <= p; i++) {
+		fileD1 << array[i] << ' ';
+	}
 	fileD1.close();
 
 	ifstream fileD(S3);
