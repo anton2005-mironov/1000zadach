@@ -2609,9 +2609,16 @@ void File50() {
 	ifstream fileB2(S2);
 	ofstream fileD1(S3, ios_base::out | ios_base::trunc);
 
-	while (!fileA2.eof() && !fileB2.eof()) {
-		if (fileA2 >> a, fileB2 >> b) {
+	fileA2 >> a, fileB2 >> b;
 
+	while (!fileA2.eof() && !fileB2.eof()) {
+		if (a <= b) {
+			fileD1 << b;
+			fileA2 >> a;
+		}
+		else {
+			fileD1 << a;
+			fileA2 >> b;
 		}
 	}
 
