@@ -297,6 +297,18 @@ void File(bool tr, int begin)
 			cout << endl << endl;
 			break;
 
+		case 47:
+			File47();
+
+			cout << endl << endl;
+			break;
+
+		case 48:
+			File48();
+
+			cout << endl << endl;
+			break;
+
 		default:
 			cout << "Задача отсутствует.";
 			cout << endl << endl;
@@ -2329,6 +2341,7 @@ void File46() {
 				file << ' ';
 			}
 		}
+		a = 0;
 		file.close();
 		ifstream file1(s0 + to_string(i), ios_base::binary);
 
@@ -2345,4 +2358,140 @@ void File46() {
 		}
 	}
 	file2.close();
+}
+
+void File47() {
+	string filename[] = { "example.txt", "example1.txt"};
+	string temporary = "temporary.txt";
+
+	int a = 0;
+	ofstream file(filename[0], ios_base::out | ios_base::trunc);
+	while (a != -100) {
+		cin >> a;
+		if (a != -100) {
+			file << a;
+			file << ' ';
+		}
+		else {
+			file.close();
+		}
+	}
+
+	ofstream file1(filename[1], ios_base::out | ios_base::trunc);
+	while (a != -100) {
+		cin >> a;
+		if (a != -100) {
+			file1 << a;
+			file1 << ' ';
+		}
+		else {
+			file1.close();
+		}
+	}
+
+	ifstream file2(filename[1], ios_base::binary);
+	ofstream tempFile(temporary, ios_base::binary | ios_base::trunc);
+
+	tempFile << file2.rdbuf();
+
+	file2.close();
+	tempFile.close();
+
+	ofstream file3(filename[1], ios_base::binary);
+	ifstream file4(filename[0], ios_base::binary);
+
+	file3 << file4.rdbuf();
+
+	file3.close(); 
+	file4.close();
+
+	ofstream file5(filename[0], ios_base::binary);
+	ifstream tempFile1(temporary, ios_base::binary);
+
+	file5 << tempFile1.rdbuf();
+
+	file5.close();
+	tempFile1.close();
+
+	ifstream fileA(filename[0]);
+	if (fileA.is_open()) {
+		while (fileA >> a) {
+			cout << a << endl;
+		}
+	}
+	fileA.close();
+
+	ifstream fileB(filename[1]);
+	if (fileB.is_open()) {
+		while (fileB >> a) {
+			cout << a << endl;
+		}
+	}
+	fileB.close();
+}
+
+void File48() {
+	string Sa = "example1.txt", Sb = "example2.txt", Sc = "example3.txt";
+	string Sd = "example.txt";
+
+	int a = 0, b = 0, c = 0;
+	ofstream fileA1(Sa, ios_base::out | ios_base::trunc);
+	while (a != -100) {
+		cin >> a;
+		if (a != -100) {
+			fileA1 << a;
+			fileA1 << ' ';
+		}
+		else {
+			fileA1.close();
+		}
+	}
+
+	ofstream fileB1(Sb, ios_base::out | ios_base::trunc);
+	while (b != -100) {
+		cin >> b;
+		if (b != -100) {
+			fileB1 << b;
+			fileB1 << ' ';
+		}
+		else {
+			fileB1.close();
+		}
+	}
+
+	ofstream fileC1(Sc, ios_base::out | ios_base::trunc);
+	while (c != -100) {
+		cin >> c;
+		if (c != -100) {
+			fileC1 << c;
+			fileC1 << ' ';
+		}
+		else {
+			fileC1.close();
+		}
+	}
+
+	ifstream fileA2(Sa);
+	ifstream fileB2(Sb);
+	ifstream fileC2(Sc);
+	ofstream fileD1(Sd, ios_base::out | ios_base::trunc);
+
+	while (fileA2 >> a, fileB2 >> b, fileC2 >> c) {
+		fileD1 << a << ' ';
+		fileD1 << b << ' ';
+		fileD1 << c << ' ';
+	}
+
+	fileA2.close();
+	fileB2.close();
+	fileC2.close();
+	fileD1.close();
+
+	ifstream fileD(Sd);
+	if (fileD.is_open()) {
+		while (fileD >> a) {
+			cout << a << endl;
+		}
+	}
+	fileD.close();
 }
