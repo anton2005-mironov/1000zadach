@@ -309,6 +309,12 @@ void File(bool tr, int begin)
 			cout << endl << endl;
 			break;
 
+		case 49:
+			File49();
+
+			cout << endl << endl;
+			break;
+
 		default:
 			cout << "Задача отсутствует.";
 			cout << endl << endl;
@@ -2480,6 +2486,74 @@ void File48() {
 		fileD1 << a << ' ';
 		fileD1 << b << ' ';
 		fileD1 << c << ' ';
+	}
+
+	fileA2.close();
+	fileB2.close();
+	fileC2.close();
+	fileD1.close();
+
+	ifstream fileD(Sd);
+	if (fileD.is_open()) {
+		while (fileD >> a) {
+			cout << a << endl;
+		}
+	}
+	fileD.close();
+}
+
+void File49() {
+	string Sa = "example1.txt", Sb = "example2.txt", Sc = "example3.txt";
+	string Sd = "example.txt";
+
+	int a = 0, b = 0, c = 0;
+	ofstream fileA1(Sa, ios_base::out | ios_base::trunc);
+	while (a != -100) {
+		cin >> a;
+		if (a != -100) {
+			fileA1 << ' ';
+			fileA1 << a;
+		}
+		else {
+			fileA1.close();
+		}
+	}
+
+	ofstream fileB1(Sb, ios_base::out | ios_base::trunc);
+	while (b != -100) {
+		cin >> b;
+		if (b != -100) {
+			fileB1 << ' ';
+			fileB1 << b;
+		}
+		else {
+			fileB1.close();
+		}
+	}
+
+	ofstream fileC1(Sc, ios_base::out | ios_base::trunc);
+	while (c != -100) {
+		cin >> c;
+		if (c != -100) {
+			fileC1 << ' ';
+			fileC1 << c;
+		}
+		else {
+			fileC1.close();
+		}
+	}
+
+	ifstream fileA2(Sa);
+	ifstream fileB2(Sb);
+	ifstream fileC2(Sc);
+	ofstream fileD1(Sd, ios_base::out | ios_base::trunc);
+
+	while (!fileA2.eof() && !fileB2.eof() && !fileC2.eof()) {
+		if (fileA2 >> a, fileB2 >> b, fileC2 >> c) {
+			fileD1 << a << ' ';
+			fileD1 << b << ' ';
+			fileD1 << c << ' ';
+		}
 	}
 
 	fileA2.close();
