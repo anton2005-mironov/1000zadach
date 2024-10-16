@@ -2831,12 +2831,13 @@ void File53() {
 		count += a;
 		n--;
 	}
-	count += a;
+	int b = a;
 	while (file2 >> a, count > 0) {
 		count--;
 	}
+	file3 << a;
 	while (file2 >> a) {
-		file3 << a;
+		file3 << a; 
 	}
 	file3.close();
 
