@@ -2821,6 +2821,24 @@ void File53() {
 		file1.close();
 	}
 	f.close();
+	
+	ifstream file2(s0);
+	file2 >> n;
+	n--;
+	int count = 0;
+	while (file2 >> a, n > 0) {
+		count += a;
+		n--;
+	}
+	count += a;
+	while (file2 >> a, count > 0) {
+		count--;
+	}
+	ofstream file3(s);
+	while (file2 >> a) {
+		file3 << a;
+	}
+	file3.close();
 
 	ifstream file4(s);
 	if (file4.is_open()) {
