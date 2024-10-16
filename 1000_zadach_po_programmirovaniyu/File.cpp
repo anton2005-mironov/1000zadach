@@ -2857,7 +2857,7 @@ void File53() {
 	file4.close();
 }
 
-void File53() {
+void File54() {
 	int n;
 	cin >> n;
 	string s0 = "example.txt";
@@ -2890,7 +2890,7 @@ void File53() {
 	}
 	f.close();
 
-	int array* = new int[n];
+	int* array = new int[n];
 
 	ifstream file2(s0);
 	ofstream file3(s, ios_base::trunc);
