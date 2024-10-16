@@ -339,6 +339,12 @@ void File(bool tr, int begin)
 			cout << endl << endl;
 			break;
 
+		case 54:
+			File54();
+
+			cout << endl << endl;
+			break;
+
 		default:
 			cout << "Задача отсутствует.";
 			cout << endl << endl;
@@ -2823,7 +2829,7 @@ void File53() {
 	f.close();
 	
 	ifstream file2(s0);
-	ofstream file3(s);
+	ofstream file3(s, ios_base::trunc);
 	file2 >> n;
 	n--;
 	int count = 0;
@@ -2839,6 +2845,68 @@ void File53() {
 	while (file2 >> a) {
 		file3 << a; 
 	}
+	file2.close();
+	file3.close();
+
+	ifstream file4(s);
+	if (file4.is_open()) {
+		while (file4 >> a) {
+			cout << a << endl;
+		}
+	}
+	file4.close();
+}
+
+void File53() {
+	int n;
+	cin >> n;
+	string s0 = "example.txt";
+	string s = "N_example.txt";
+	ofstream f(s0, ios_base::binary | ios_base::trunc);
+
+	f << n << ' ';
+	int a = 0, size = 0;
+	for (int i = 1; i <= n; i++) {
+		ofstream file(s0 + to_string(i), ios_base::out | ios_base::trunc);
+		while (a != -100) {
+			cin >> a;
+			if (a != -100) {
+				file << a;
+				file << ' ';
+				size++;
+			}
+		}
+		a = 0;
+		file.close();
+		f << size << ' ';
+		size = 0;
+	}
+	for (int i = 1; i <= n; i++) {
+		ifstream file1(s0 + to_string(i), ios_base::binary);
+
+		f << file1.rdbuf();
+
+		file1.close();
+	}
+	f.close();
+
+	int array* = new int[n];
+
+	ifstream file2(s0);
+	ofstream file3(s, ios_base::trunc);
+	file2 >> a;
+	for (int i = 0; i < n; i++) {
+		file2 >> array[i];
+	}
+	for (int i = 0; i < n; i++) {
+		double b = 0;
+		for (int j = 1; file2 >> a, j <= array[i]; j++) {
+			b += a;
+		}
+		b /= array[i];
+		file3 << b;
+	}
+	file2.close();
 	file3.close();
 
 	ifstream file4(s);
