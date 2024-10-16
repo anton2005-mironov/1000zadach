@@ -51,5 +51,7 @@ void File48();
 void File49();
 void File50();
 void File51();
+void File52();
+void File53();
 
 void File(bool tr, int begin);
