@@ -2823,6 +2823,7 @@ void File53() {
 	f.close();
 	
 	ifstream file2(s0);
+	ofstream file3(s);
 	file2 >> n;
 	n--;
 	int count = 0;
@@ -2834,7 +2835,6 @@ void File53() {
 	while (file2 >> a, count > 0) {
 		count--;
 	}
-	ofstream file3(s);
 	while (file2 >> a) {
 		file3 << a;
 	}
