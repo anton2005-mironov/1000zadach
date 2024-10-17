@@ -351,6 +351,12 @@ void File(bool tr, int begin)
 			cout << endl << endl;
 			break;
 
+		case 56:
+			File56();
+
+			cout << endl << endl;
+			break;
+
 		default:
 			cout << "Задача отсутствует.";
 			cout << endl << endl;
@@ -3002,11 +3008,17 @@ void File56() {
 	}
 	f.close();
 
-	ifstream file3(s);
-	if (file3.is_open()) {
-		while (file3 >> a) {
+	ifstream file2(s0);
+	ofstream file3(s);
+
+	file2.close();
+	file3.close();
+
+	ifstream file4(s);
+	if (file4.is_open()) {
+		while (file4 >> a) {
 			cout << a << endl;
 		}
 	}
-	file3.close();
+	file4.close();
 }
