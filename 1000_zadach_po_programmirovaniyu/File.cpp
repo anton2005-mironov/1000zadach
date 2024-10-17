@@ -3011,6 +3011,13 @@ void File56() {
 	ifstream file2(s0);
 	ofstream file3(s);
 
+	for (int i = 1; file2 >> a, i < n; i++) {
+	}
+
+	while (file2 >> a) {
+		file3 << a;
+	}
+
 	file2.close();
 	file3.close();
 
