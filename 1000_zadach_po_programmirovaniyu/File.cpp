@@ -3084,12 +3084,11 @@ void File57() {
 		file2 >> a;
 		int j = a;
 		file2 >> a;
-		file3 << a;
+		file3 << a << ' ';
 		for (; file2 >> a, j > 2; j--) {
 
 		}
-		file2 >> a;
-		file4 << a;
+		file4 << a << ' ';
 	}
 
 	file2.close();
@@ -3099,15 +3098,16 @@ void File57() {
 	ifstream file5(s1);
 	if (file5.is_open()) {
 		while (file5 >> a) {
-			cout << a << endl;
+			cout << a << ' ';
 		}
 	}
 	file5.close();
+	cout << endl;
 
 	ifstream file6(s2);
 	if (file6.is_open()) {
 		while (file6 >> a) {
-			cout << a << endl;
+			cout << a << ' ';
 		}
 	}
 	file6.close();
