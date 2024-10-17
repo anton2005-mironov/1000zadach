@@ -3011,11 +3011,15 @@ void File56() {
 	ifstream file2(s0);
 	ofstream file3(s);
 
-	for (int i = 1; file2 >> a, i < n; i++) {
+	for (int i = 1; i < n; i++) {
+		file2 >> a;
+		for (int j = a; file2 >> a, j > 0; j--) {
+
+		}
 	}
 
 	while (file2 >> a) {
-		file3 << a;
+		file3 << a << ' ';
 	}
 
 	file2.close();
