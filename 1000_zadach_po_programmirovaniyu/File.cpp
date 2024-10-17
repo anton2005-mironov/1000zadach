@@ -3002,11 +3002,11 @@ void File56() {
 	}
 	f.close();
 
-	ifstream file2(s0);
-	if (file2.is_open()) {
-		while (file2 >> a) {
+	ifstream file3(s);
+	if (file3.is_open()) {
+		while (file3 >> a) {
 			cout << a << endl;
 		}
 	}
-	file2.close();
+	file3.close();
 }
