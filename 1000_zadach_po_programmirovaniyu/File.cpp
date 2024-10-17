@@ -3044,7 +3044,8 @@ void File57() {
 	int n;
 	cin >> n;
 	string s0 = "example.txt";
-	string s = "N_example.txt";
+	string s1 = "S1_example.txt";
+	string s2 = "S2_example.txt";
 
 	int a = 0, size = 0;
 	int* array = new int[n];
@@ -3076,18 +3077,38 @@ void File57() {
 	f.close();
 
 	ifstream file2(s0);
-	ofstream file3(s, ios_base::trunc);
+	ofstream file3(s1, ios_base::trunc);
+	ofstream file4(s2, ios_base::trunc);
 
+	for (int i = 1; i <= n; i++) {
+		file2 >> a;
+		int j = a;
+		file2 >> a;
+		file3 << a;
+		for (; file2 >> a, j > 2; j--) {
 
+		}
+		file2 >> a;
+		file4 << a;
+	}
 
 	file2.close();
 	file3.close();
+	file4.close();
 
-	ifstream file4(s);
-	if (file4.is_open()) {
-		while (file4 >> a) {
+	ifstream file5(s1);
+	if (file5.is_open()) {
+		while (file5 >> a) {
 			cout << a << endl;
 		}
 	}
-	file4.close();
+	file5.close();
+
+	ifstream file6(s2);
+	if (file6.is_open()) {
+		while (file6 >> a) {
+			cout << a << endl;
+		}
+	}
+	file6.close();
 }
