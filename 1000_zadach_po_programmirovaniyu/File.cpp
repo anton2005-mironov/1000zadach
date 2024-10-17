@@ -2951,7 +2951,51 @@ void File55() {
 	for (int i = 1; i <= n; i++) {
 		ifstream file1(s0 + to_string(i), ios_base::binary);
 
-		f << array[i - 1];
+		f << array[i - 1] << ' ';
+		f << file1.rdbuf();
+
+		file1.close();
+	}
+	f.close();
+
+	ifstream file2(s0);
+	if (file2.is_open()) {
+		while (file2 >> a) {
+			cout << a << endl;
+		}
+	}
+	file2.close();
+}
+
+void File56() {
+	int n;
+	cin >> n;
+	string s0 = "example.txt";
+	string s = "N_example.txt";
+
+	int a = 0, size = 0;
+	int* array = new int[n];
+	for (int i = 1; i <= n; i++) {
+		ofstream file(s0 + to_string(i), ios_base::out | ios_base::trunc);
+		while (a != -100) {
+			cin >> a;
+			if (a != -100) {
+				file << a;
+				file << ' ';
+				size++;
+			}
+		}
+		a = 0;
+		file.close();
+		array[i - 1] = size;
+		size = 0;
+	}
+
+	ofstream f(s0, ios_base::binary | ios_base::trunc);
+	for (int i = 1; i <= n; i++) {
+		ifstream file1(s0 + to_string(i), ios_base::binary);
+
+		f << array[i - 1] << ' ';
 		f << file1.rdbuf();
 
 		file1.close();
