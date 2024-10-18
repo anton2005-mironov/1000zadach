@@ -375,6 +375,18 @@ void File(bool tr, int begin)
 			cout << endl << endl;
 			break;
 
+		case 60:
+			File60();
+
+			cout << endl << endl;
+			break;
+
+		case 61:
+			File61();
+
+			cout << endl << endl;
+			break;
+
 		default:
 			cout << "Задача отсутствует.";
 			cout << endl << endl;
@@ -3176,6 +3188,72 @@ void File59() {
 	size_t spacePos = s.find_last_of(' ');
 	if (spacePos != string::npos) {
 		s = s.substr(0, spacePos);
+	}
+
+	ofstream file3(s0, ios_base::trunc);
+	file3 << s;
+	file3.close();
+
+	ifstream file4(s0);
+	if (file4.is_open()) {
+		while (file4 >> t) {
+			cout << t;
+		}
+	}
+	file4.close();
+}
+
+void File60() {
+	string s0 = "example.txt";
+	string s = "";
+	char t;
+
+	ofstream file1(s0, ios_base::trunc);
+	getline(cin, s, ';');
+	file1 << s;
+	file1.close();
+	s = "";
+
+	ifstream file2(s0);
+	getline(file2, s, '\0');
+	file2.close();
+
+	size_t spacePos = s.find(' ');
+	if (spacePos != string::npos) {
+		s = s.substr(spacePos, s.size() - 1);
+	}
+
+	ofstream file3(s0, ios_base::trunc);
+	file3 << s;
+	file3.close();
+
+	ifstream file4(s0);
+	if (file4.is_open()) {
+		while (file4 >> t) {
+			cout << t;
+		}
+	}
+	file4.close();
+}
+
+void File61() {
+	string s0 = "example.txt";
+	string s = "";
+	char t;
+
+	ofstream file1(s0, ios_base::trunc);
+	getline(cin, s, ';');
+	file1 << s;
+	file1.close();
+	s = "";
+
+	ifstream file2(s0);
+	getline(file2, s, '\0');
+	file2.close();
+
+	size_t spacePos = s.find_last_of(' ');
+	if (spacePos != string::npos) {
+		s = s.substr(spacePos, s.size() - 1);
 	}
 
 	ofstream file3(s0, ios_base::trunc);
