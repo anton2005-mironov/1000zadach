@@ -387,6 +387,12 @@ void File(bool tr, int begin)
 			cout << endl << endl;
 			break;
 
+		case 62:
+			File62();
+
+			cout << endl << endl;
+			break;
+
 		default:
 			cout << "Задача отсутствует.";
 			cout << endl << endl;
@@ -3254,6 +3260,45 @@ void File61() {
 	size_t spacePos = s.find_last_of(' ');
 	if (spacePos != string::npos) {
 		s = s.substr(spacePos, s.size() - 1);
+	}
+
+	ofstream file3(s0, ios_base::trunc);
+	file3 << s;
+	file3.close();
+
+	ifstream file4(s0);
+	if (file4.is_open()) {
+		while (file4 >> t) {
+			cout << t;
+		}
+	}
+	file4.close();
+}
+
+void File62() {
+	string s0 = "example.txt";
+	string s = "";
+	char t;
+
+	ofstream file1(s0, ios_base::trunc);
+	getline(cin, s, ';');
+	file1 << s;
+	file1.close();
+	s = "";
+
+	ifstream file2(s0);
+	getline(file2, s, '\0');
+	file2.close();
+
+	for (int i = 1; i < s.size(); i++) {
+		if (s[i] < s[i - 1]) {
+			int a = s[i];
+			s[i] = s[i - 1];
+			s[i - 1] = a;
+			if (i != 1) {
+				i -= 2;
+			}
+		}
 	}
 
 	ofstream file3(s0, ios_base::trunc);
