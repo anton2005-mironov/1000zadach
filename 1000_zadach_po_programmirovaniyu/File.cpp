@@ -393,6 +393,12 @@ void File(bool tr, int begin)
 			cout << endl << endl;
 			break;
 
+		case 63:
+			File63();
+
+			cout << endl << endl;
+			break;
+
 		default:
 			cout << "Задача отсутствует.";
 			cout << endl << endl;
@@ -3278,7 +3284,6 @@ void File61() {
 void File62() {
 	string s0 = "example.txt";
 	string s = "";
-	char t;
 
 	ofstream file1(s0, ios_base::trunc);
 	getline(cin, s, ';');
@@ -3290,14 +3295,17 @@ void File62() {
 	getline(file2, s, '\0');
 	file2.close();
 
-	for (int i = 1; i < s.size(); i++) {
+	for (unsigned int i = 1; i < s.size();) {
 		if (s[i] < s[i - 1]) {
 			int a = s[i];
 			s[i] = s[i - 1];
 			s[i - 1] = a;
 			if (i != 1) {
-				i -= 2;
+				i--;
 			}
+		}
+		else {
+			i++;
 		}
 	}
 
@@ -3307,9 +3315,58 @@ void File62() {
 
 	ifstream file4(s0);
 	if (file4.is_open()) {
-		while (file4 >> t) {
-			cout << t;
-		}
+		getline(file4, s, '\0');
+		cout << s;
 	}
 	file4.close();
+}
+
+void File63() {
+	string s0 = "example.txt";
+	string s = "";
+	unsigned int K;
+	cin >> K;
+
+	ofstream file1(s0, ios_base::trunc);
+	getline(cin, s, ';');
+	file1 << s;
+	file1.close();
+	s = "";
+
+	string stringOutputFileName = "string_output.txt";
+	string charOutputFileName = "char_output.txt";
+
+	ifstream file2(s0);
+	ofstream stringOutputFile(stringOutputFileName, ios_base::trunc);
+	ofstream charOutputFile(charOutputFileName, ios_base::trunc);
+
+	string line;
+	while (getline(file2, line, '\0')) {
+		if (line.length() < K) {
+			stringOutputFile << line << endl;
+			charOutputFile << ' ';
+		}
+		else {
+			stringOutputFile << line.substr(0, K + 1) << endl;
+			charOutputFile << line[K] << endl;
+		}
+	}
+
+	file1.close();
+	stringOutputFile.close();
+	charOutputFile.close();
+
+	ifstream stringOutputFile1(stringOutputFileName);
+	if (stringOutputFile1.is_open()) {
+		getline(stringOutputFile1, line, '\0');
+		cout << line;
+	}
+	stringOutputFile1.close();
+
+	ifstream charOutputFile1(charOutputFileName);
+	if (charOutputFile1.is_open()) {
+		getline(charOutputFile1, line, '\0');
+		cout << line;
+	}
+	charOutputFile1.close();
 }
