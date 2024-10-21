@@ -399,6 +399,12 @@ void File(bool tr, int begin)
 			cout << endl << endl;
 			break;
 
+		case 64:
+			File64();
+
+			cout << endl << endl;
+			break;
+
 		default:
 			cout << "Задача отсутствует.";
 			cout << endl << endl;
@@ -3369,4 +3375,42 @@ void File63() {
 		cout << line;
 	}
 	charOutputFile1.close();
+}
+
+void File64() {
+	string s0 = "example.txt";
+	string s1 = "example1.txt";
+	string s = "";
+
+	ofstream file1(s0, ios_base::trunc);
+	getline(cin, s, ';');
+	file1 << s;
+	file1.close();
+	s = "";
+
+	vector<string> lines;
+	int minLength = numeric_limits<size_t>::max();
+	ifstream file2(s0);
+	ofstream file3(s1);
+	while (getline(file2, s)) {
+		lines.push_back(s);
+		if (s.length() < minLength) {
+			minLength = s.length();
+		}
+	}
+
+	for (const auto& l : lines) {
+		if (l.length() == minLength) {
+			file3 << l << endl;
+		}
+	}
+	file2.close();
+	file3.close();
+
+	ifstream file4(s1);
+	if (file4.is_open()) {
+		getline(file4, s, '\0');
+		cout << s;
+	}
+	file4.close();
 }
