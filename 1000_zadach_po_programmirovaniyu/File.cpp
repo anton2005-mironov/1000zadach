@@ -3392,7 +3392,7 @@ void File64() {
 	int minLength = numeric_limits<size_t>::max();
 	ifstream file2(s0);
 	ofstream file3(s1);
-	while (getline(file2, s, '\n')) {
+	while (getline(file2, s, ' ')) {
 		lines.push_back(s);
 		if (s.length() < minLength) {
 			minLength = s.length();
@@ -3409,7 +3409,7 @@ void File64() {
 
 	ifstream file4(s1);
 	if (file4.is_open()) {
-		getline(file4, s, '\0');
+		getline(file4, s, ' ');
 		cout << s;
 	}
 	file4.close();
