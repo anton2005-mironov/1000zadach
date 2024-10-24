@@ -3378,8 +3378,8 @@ void File63() {
 }
 
 void File64() {
-	string s0 = "C:\Program Files\example.txt";
-	string s1 = "C:\Program Files\example1.txt";
+	string s0 = "C:\Users\Anton\source\repos\Антон C++\1000_zadach_po_programmirovaniyu\1000_zadach_po_programmirovaniyu\example.txt";
+	string s1 = "C:\Users\Anton\source\repos\Антон C++\1000_zadach_po_programmirovaniyu\1000_zadach_po_programmirovaniyu\example1.txt";
 	string s = "";
 
 	ofstream file1(s0, ios_base::trunc);
@@ -3392,7 +3392,7 @@ void File64() {
 	int minLength = numeric_limits<size_t>::max();
 	ifstream file2(s0);
 	ofstream file3(s1);
-	while (getline(file2, s, ' ')) {
+	while (getline(file2, s, '\n')) {
 		lines.push_back(s);
 		if (s.length() < minLength) {
 			minLength = s.length();
