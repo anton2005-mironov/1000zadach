@@ -7,6 +7,7 @@
 #include <string>
 #include <vector>
 #include <cstdio>
+#include <Windows.h>
 
 using namespace std;
 
@@ -494,21 +495,30 @@ void File3() {
 	}
 }
 
-void File4() {/*
-	vector<string> targetFileNames = { "file1.txt", "file2.txt", "file3.txt", "file4.txt" };
-	namespace fs = experimental::filesystem;
+void File4() {
+	std::vector<std::string> filenames(4);
+	std::cout << "Введите имена четырех файлов:\n";
+
+	for (int i = 0; i < 4; ++i) {
+		std::cout << "Файл " << (i + 1) << ": ";
+		std::cin >> filenames[i];
+	}
+
 	int count = 0;
-	for (const auto& entry : fs::directory_iterator(".")) {
-		if (entry.is_regular_life()) {
-			for (const string& targetFileName : targetFileNames) {
-				if (entry.path().filename() == targetFileName) {
-					count++;
-				}
-			}
+
+	for (const auto& filename : filenames) {
+		DWORD fileAttr = GetFileAttributesA(filename.c_str());
+		if (fileAttr != INVALID_FILE_ATTRIBUTES && !(fileAttr & FILE_ATTRIBUTE_DIRECTORY)) {
+			std::cout << "Файл \"" << filename << "\" существует.\n";
+			count++;
+		}
+		else {
+			std::cout << "Файл \"" << filename << "\" не найден.\n";
 		}
 	}
 
-	cout << count;*/
+	std::cout << "Количество существующих файлов: " << count << std::endl;
+
 }
 
 void File5() {
@@ -3378,8 +3388,8 @@ void File63() {
 }
 
 void File64() {
-	string s0 = "C:\Users\Anton\source\repos\Антон C++\1000_zadach_po_programmirovaniyu\1000_zadach_po_programmirovaniyu\example.txt";
-	string s1 = "C:\Users\Anton\source\repos\Антон C++\1000_zadach_po_programmirovaniyu\1000_zadach_po_programmirovaniyu\example1.txt";
+	string s0 = "C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\1000_zadach_po_programmirovaniyu\\example.txt";
+	string s1 = "C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\1000_zadach_po_programmirovaniyu\\example1.txt";
 	string s = "";
 
 	ofstream file1(s0, ios_base::trunc);
