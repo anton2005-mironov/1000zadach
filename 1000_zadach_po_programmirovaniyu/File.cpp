@@ -411,6 +411,12 @@ void File(bool tr, int begin)
 			cout << endl << endl;
 			break;
 
+		case 66:
+			File66();
+
+			cout << endl << endl;
+			break;
+
 		default:
 			cout << "Задача отсутствует.";
 			cout << endl << endl;

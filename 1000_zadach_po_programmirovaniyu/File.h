@@ -65,5 +65,6 @@ void File62();
 void File63();
 void File64();
 void File65();
+void File66();
 
 void File(bool tr, int begin);
