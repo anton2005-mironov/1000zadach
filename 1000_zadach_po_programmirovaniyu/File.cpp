@@ -2717,30 +2717,29 @@ void File50() {
 		}
 	}
 
-	double* array = new double[q];
+	vector<double> numbers;
 
 	ifstream fileA2(S1);
 	ifstream fileB2(S2);
 
 	int p = 0;
 	while (fileA2 >> a) {
-		array[p] = a;
+		numbers.push_back(a);
 		p++;
 	}
 	while (fileB2 >> b) {
-		array[p] = b;
+		numbers.push_back(b);
 		p++;
 	}
-	p--;
 
 	fileA2.close();
 	fileB2.close();
 
-	for (int i = 1; i <= p; i++) {
-		if (array[i] < array[i - 1]) {
-			a = array[i];
-			array[i] = array[i - 1];
-			array[i - 1] = a;
+	for (int i = 1; i < p; i++) {
+		if (numbers[i] < numbers[i - 1]) {
+			a = numbers[i];
+			numbers[i] = numbers[i - 1];
+			numbers[i - 1] = a;
 			if (i != 1) {
 				i -= 2;
 			}
@@ -2748,8 +2747,8 @@ void File50() {
 	}
 
 	ofstream fileD1(S3, ios_base::out | ios_base::trunc);
-	for (int i = 0; i <= p; i++) {
-		fileD1 << array[i] << ' ';
+	for (int i = 0; i < p; i++) {
+		fileD1 << numbers[i] << ' ';
 	}
 	fileD1.close();
 
