@@ -3496,7 +3496,7 @@ void File66() {
 }
 
 void File67() {
-	ifstream inputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\example.txt");
+	ifstream inputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\data.txt");
 
 	vector<int> days;
 	vector<int> months;
@@ -3504,7 +3504,7 @@ void File67() {
 
 	while (getline(inputFile, line)) {
 		string dayStr = line.substr(0, 2);
-		string monthStr = line.substr(3, 2);
+		string monthStr = line.substr(2, 2);
 
 		days.push_back(stoi(dayStr));
 		months.push_back(stoi(monthStr));
