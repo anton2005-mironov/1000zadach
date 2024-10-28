@@ -7,7 +7,6 @@
 #include <string>
 #include <vector>
 #include <cstdio>
-#include <Windows.h>
 
 using namespace std;
 
@@ -496,28 +495,21 @@ void File3() {
 }
 
 void File4() {
-	std::vector<std::string> filenames(4);
-	std::cout << "Введите имена четырех файлов:\n";
-
+	string fileNames[4];
+	cout << "Введите имена четырех файлов:\n";
 	for (int i = 0; i < 4; ++i) {
-		std::cout << "Файл " << (i + 1) << ": ";
-		std::cin >> filenames[i];
+		cout << "Имя файла " << (i + 1) << ": ";
+		cin >> fileNames[i];
 	}
 
 	int count = 0;
-
-	for (const auto& filename : filenames) {
-		DWORD fileAttr = GetFileAttributesA(filename.c_str());
-		if (fileAttr != INVALID_FILE_ATTRIBUTES && !(fileAttr & FILE_ATTRIBUTE_DIRECTORY)) {
-			std::cout << "Файл \"" << filename << "\" существует.\n";
+	for (const auto& fileName : fileNames) {
+		if (filesystem::exists(fileName)) {
 			count++;
-		}
-		else {
-			std::cout << "Файл \"" << filename << "\" не найден.\n";
 		}
 	}
 
-	std::cout << "Количество существующих файлов: " << count << std::endl;
+	cout << "Количество найденных файлов: " << count << endl;
 
 }
 
@@ -3388,39 +3380,30 @@ void File63() {
 }
 
 void File64() {
-	string s0 = "C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\1000_zadach_po_programmirovaniyu\\example.txt";
-	string s1 = "C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\1000_zadach_po_programmirovaniyu\\example1.txt";
-	string s = "";
+	string a0 = "";
+	string a1 = "";
+	ifstream inputFile(a0);
+	ofstream outputFile(a1);
 
-	ofstream file1(s0, ios_base::trunc);
-	getline(cin, s, ';');
-	file1 << s;
-	file1.close();
-	s = "";
+	if (inputFile.is_open() || outputFile.is_open()) {
+		vector<string> lines;
+		string line;
+		size_t minLength = numeric_limits<size_t>::max();
 
-	vector<string> lines;
-	int minLength = numeric_limits<size_t>::max();
-	ifstream file2(s0);
-	ofstream file3(s1);
-	while (getline(file2, s, ' ')) {
-		lines.push_back(s);
-		if (s.length() < minLength) {
-			minLength = s.length();
+		while (getline(inputFile, line)) {
+			lines.push_back(line);
+			if (line.length() < minLength) {
+				minLength = line.length();
+			}
 		}
-	}
 
-	for (const auto& l : lines) {
-		if (l.length() == minLength) {
-			file3 << l << endl;
+		for (const auto& l : lines) {
+			if (l.length() == minLength) {
+				outputFile << l << endl;
+			}
 		}
-	}
-	file2.close();
-	file3.close();
 
-	ifstream file4(s1);
-	if (file4.is_open()) {
-		getline(file4, s, ' ');
-		cout << s;
+		inputFile.close();
+		outputFile.close();
 	}
-	file4.close();
 }
