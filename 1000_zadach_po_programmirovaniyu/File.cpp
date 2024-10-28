@@ -405,6 +405,12 @@ void File(bool tr, int begin)
 			cout << endl << endl;
 			break;
 
+		case 65:
+			File65();
+
+			cout << endl << endl;
+			break;
+
 		default:
 			cout << "Задача отсутствует.";
 			cout << endl << endl;
@@ -1341,28 +1347,29 @@ void File25() {
 	}
 	file.close();
 
-	double* array = new double[i];
+	vector<double> numbers;
+	double number;
 	i = 0;
 
 	ifstream file1(filename);
 	if (file1.is_open()) {
-		while (file1 >> array[i]) {
+		while (file1 >> number) {
+			numbers.push_back(number);
 			i++;
 		}
 	}
 	file1.close();
 
 	for (int j = 0; j < i; j++) {
-		array[j] *= array[j];
+		numbers[j] *= numbers[j];
 	}
 
 	ofstream file2(filename, ios_base::out | ios_base::trunc);
 	for (int j = 0; j < i; j++) {
-		file2 << array[j];
+		file2 << numbers[j];
 		file2 << ' ';
 	}
 	file2.close();
-	delete[] array;
 
 	ifstream file3(filename);
 	if (file3.is_open()) {
@@ -1389,35 +1396,36 @@ void File26() {
 	}
 	file.close();
 
-	double* array = new double[i];
+	vector<double> numbers;
+	double number;
 	i = 0;
 
 	ifstream file1(filename);
 	if (file1.is_open()) {
-		while (file1 >> array[i]) {
+		while (file1 >> number) {
+			numbers.push_back(number);
 			i++;
 		}
 	}
 	file1.close();
 
-	max = array[0];
-	min = array[0];
+	max = numbers[0];
+	min = numbers[0];
 	for (int j = 0; j < i; j++) {
-		if (array[j] < min) {
-			min = array[j];
+		if (numbers[j] < min) {
+			min = numbers[j];
 		}
-		if (array[j] > max) {
-			max = array[j];
+		if (numbers[j] > max) {
+			max = numbers[j];
 		}
 	}
 
 	ofstream file2(filename, ios_base::out | ios_base::trunc);
 	for (int j = 0; j < i; j++) {
-		file2 << array[j];
+		file2 << numbers[j];
 		file2 << ' ';
 	}
 	file2.close();
-	delete[] array;
 
 	ifstream file3(filename);
 	if (file3.is_open()) {
@@ -1444,12 +1452,14 @@ void File27() {
 	}
 	file.close();
 
-	double* array = new double[i];
+	vector<double> numbers;
+	double number;
 	i = 0;
 
 	ifstream file1(filename);
 	if (file1.is_open()) {
-		while (file1 >> array[i]) {
+		while (file1 >> number) {
+			numbers.push_back(number);
 			i++;
 		}
 	}
@@ -1457,18 +1467,17 @@ void File27() {
 
 	i--;
 	for (int j = 0; j <= i; j++) {
-		a = array[j];
-		array[j] = array[i];
-		array[i] = a;
+		a = numbers[j];
+		numbers[j] = numbers[i];
+		numbers[i] = a;
 	}
 
 	ofstream file2(filename, ios_base::out | ios_base::trunc);
 	for (int j = 0; j < i; j++) {
-		file2 << array[j];
+		file2 << numbers[j];
 		file2 << ' ';
 	}
 	file2.close();
-	delete[] array;
 
 	ifstream file3(filename);
 	if (file3.is_open()) {
@@ -1495,29 +1504,30 @@ void File28() {
 	}
 	file.close();
 
-	double* array = new double[i];
+	vector<double> numbers;
+	double number;
 	i = 0;
 
 	ifstream file1(filename);
 	if (file1.is_open()) {
-		while (file1 >> array[i]) {
+		while (file1 >> number) {
+			numbers.push_back(number);
 			i++;
 		}
 	}
 	file1.close();
 
 	for (int j = 1; j < i -1; j++) {
-		array[j] += array[j - 1] + array[j + 1];
-		array[j] /= 3;
+		numbers[j] += numbers[j - 1] + numbers[j + 1];
+		numbers[j] /= 3;
 	}
 
 	ofstream file2(filename, ios_base::out | ios_base::trunc);
 	for (int j = 0; j < i; j++) {
-		file2 << array[j];
+		file2 << numbers[j];
 		file2 << ' ';
 	}
 	file2.close();
-	delete[] array;
 
 	ifstream file3(filename);
 	if (file3.is_open()) {
@@ -1544,12 +1554,14 @@ void File29() {
 	}
 	file.close();
 
-	double* array = new double[i];
+	vector<double> numbers;
+	double number;
 	i = 0;
 
 	ifstream file1(filename);
 	if (file1.is_open()) {
-		while (file1 >> array[i]) {
+		while (file1 >> number) {
+			numbers.push_back(number);
 			i++;
 		}
 	}
@@ -1557,11 +1569,10 @@ void File29() {
 
 	ofstream file2(filename, ios_base::out | ios_base::trunc);
 	for (int j = 0; j < 50; j++) {
-		file2 << array[j];
+		file2 << numbers[j];
 		file2 << ' ';
 	}
 	file2.close();
-	delete[] array;
 
 	ifstream file3(filename);
 	if (file3.is_open()) {
@@ -1588,12 +1599,14 @@ void File30() {
 	}
 	file.close();
 
-	double* array = new double[i];
+	vector<double> numbers;
+	double number;
 	i = 0;
 
 	ifstream file1(filename);
 	if (file1.is_open()) {
-		while (file1 >> array[i]) {
+		while (file1 >> number) {
+			numbers.push_back(number);
 			i++;
 		}
 	}
@@ -1601,11 +1614,10 @@ void File30() {
 
 	ofstream file2(filename, ios_base::out | ios_base::trunc);
 	for (int j = 0; j < i / 2; j++) {
-		file2 << array[j];
+		file2 << numbers[j];
 		file2 << ' ';
 	}
 	file2.close();
-	delete[] array;
 
 	ifstream file3(filename);
 	if (file3.is_open()) {
@@ -1632,29 +1644,30 @@ void File31() {
 	}
 	file.close();
 
-	double* array = new double[i];
+	vector<double> numbers;
+	double number;
 	i = 0;
 
 	ifstream file1(filename);
 	if (file1.is_open()) {
-		while (file1 >> array[i]) {
+		while (file1 >> number) {
+			numbers.push_back(number);
 			i++;
 		}
 	}
 	file1.close();
 
 	for (int j = 1; j < i - 1; j++) {
-		array[j] += array[j - 1] + array[j + 1];
-		array[j] /= 3;
+		numbers[j] += numbers[j - 1] + numbers[j + 1];
+		numbers[j] /= 3;
 	}
 
 	ofstream file2(filename, ios_base::out | ios_base::trunc);
 	for (int j = i - 50; j < i; j++) {
-		file2 << array[j];
+		file2 << numbers[j];
 		file2 << ' ';
 	}
 	file2.close();
-	delete[] array;
 
 	ifstream file3(filename);
 	if (file3.is_open()) {
@@ -1681,12 +1694,14 @@ void File32() {
 	}
 	file.close();
 
-	double* array = new double[i];
+	vector<double> numbers;
+	double number;
 	i = 0;
 
 	ifstream file1(filename);
 	if (file1.is_open()) {
-		while (file1 >> array[i]) {
+		while (file1 >> number) {
+			numbers.push_back(number);
 			i++;
 		}
 	}
@@ -1694,11 +1709,10 @@ void File32() {
 
 	ofstream file2(filename, ios_base::out | ios_base::trunc);
 	for (int j = i / 2; j < i; j++) {
-		file2 << array[j];
+		file2 << numbers[j];
 		file2 << ' ';
 	}
 	file2.close();
-	delete[] array;
 
 	ifstream file3(filename);
 	if (file3.is_open()) {
@@ -3400,6 +3414,35 @@ void File64() {
 		for (const auto& l : lines) {
 			if (l.length() == minLength) {
 				outputFile << l << endl;
+			}
+		}
+
+		inputFile.close();
+		outputFile.close();
+	}
+}
+
+void File65() {
+	string a0 = "C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\example.txt";
+	string a1 = "C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\example1.txt";
+	ifstream inputFile(a0);
+	ofstream outputFile(a1, ios_base::trunc);
+
+	if (inputFile.is_open() || outputFile.is_open()) {
+		vector<string> lines;
+		string line;
+		size_t maxLength = 0;
+
+		while (getline(inputFile, line)) {
+			lines.push_back(line);
+			if (line.length() > maxLength) {
+				maxLength = line.length();
+			}
+		}
+
+		for (auto it = lines.rbegin(); it != lines.rend(); ++it) {
+			if (it->length() == maxLength) {
+				outputFile << *it << endl;
 			}
 		}
 
