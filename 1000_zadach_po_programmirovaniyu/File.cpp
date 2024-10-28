@@ -417,6 +417,12 @@ void File(bool tr, int begin)
 			cout << endl << endl;
 			break;
 
+		case 67:
+			File67();
+
+			cout << endl << endl;
+			break;
+
 		default:
 			cout << "Задача отсутствует.";
 			cout << endl << endl;
@@ -3487,4 +3493,35 @@ void File66() {
 		inputFile.close();
 		outputFile.close();
 	}
+}
+
+void File67() {
+	ifstream inputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\example.txt");
+
+	vector<int> days;
+	vector<int> months;
+	string line;
+
+	while (getline(inputFile, line)) {
+		string dayStr = line.substr(0, 2);
+		string monthStr = line.substr(3, 2);
+
+		days.push_back(stoi(dayStr));
+		months.push_back(stoi(monthStr));
+	}
+	inputFile.close();
+
+	ofstream daysFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\days.txt", ios_base::trunc);
+	for (int day : days) {
+		daysFile << day << endl;
+	}
+	daysFile.close();
+
+	ofstream monthsFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\months.txt", ios_base::trunc);
+	for (int month : months) {
+		monthsFile << month << endl;
+	}
+	monthsFile.close();
+
+	cout << "Дни и месяцы успешно записаны в файлы." << endl;
 }
