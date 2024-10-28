@@ -3541,7 +3541,7 @@ void File68() {
 
 	while (getline(inputFile, line)) {
 		string monthStr = line.substr(2, 2);
-		string yearStr = line.substr(3, 4);
+		string yearStr = line.substr(4, 5);
 
 		months.push_back(stoi(monthStr));
 		years.push_back(stoi(yearStr));
