@@ -3380,8 +3380,8 @@ void File63() {
 }
 
 void File64() {
-	string a0 = "";
-	string a1 = "";
+	string a0 = "C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\example.txt";
+	string a1 = "C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\example1.txt";
 	ifstream inputFile(a0);
 	ofstream outputFile(a1);
 
