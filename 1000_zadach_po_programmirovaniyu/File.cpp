@@ -423,6 +423,12 @@ void File(bool tr, int begin)
 			cout << endl << endl;
 			break;
 
+		case 68:
+			File68();
+
+			cout << endl << endl;
+			break;
+
 		default:
 			cout << "«адача отсутствует.";
 			cout << endl << endl;
@@ -3522,6 +3528,37 @@ void File67() {
 		monthsFile << month << endl;
 	}
 	monthsFile.close();
+
+	cout << "ƒни и мес€цы успешно записаны в файлы." << endl;
+}
+
+void File68() {
+	ifstream inputFile("C:\\Users\\Anton\\source\\repos\\јнтон C++\\1000_zadach_po_programmirovaniyu\\data.txt");
+
+	vector<int> years;
+	vector<int> months;
+	string line;
+
+	while (getline(inputFile, line)) {
+		string monthStr = line.substr(2, 2);
+		string yearStr = line.substr(3, 4);
+
+		months.push_back(stoi(monthStr));
+		years.push_back(stoi(yearStr));
+	}
+	inputFile.close();
+
+	ofstream monthsFile("C:\\Users\\Anton\\source\\repos\\јнтон C++\\1000_zadach_po_programmirovaniyu\\months.txt", ios_base::trunc);
+	for (auto it = months.rbegin(); it != months.rend(); ++it) {
+		monthsFile << *it << endl;
+	}
+	monthsFile.close();
+
+	ofstream yearsFile("C:\\Users\\Anton\\source\\repos\\јнтон C++\\1000_zadach_po_programmirovaniyu\\years.txt", ios_base::trunc);
+	for (auto it = years.rbegin(); it != years.rend(); ++it) {
+		yearsFile << *it << endl;
+	}
+	yearsFile.close();
 
 	cout << "ƒни и мес€цы успешно записаны в файлы." << endl;
 }
