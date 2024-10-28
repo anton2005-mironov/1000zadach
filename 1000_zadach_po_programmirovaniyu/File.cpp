@@ -3457,3 +3457,28 @@ void File65() {
 		outputFile.close();
 	}
 }
+
+void File66() {
+	string a0 = "C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\example.txt";
+	string a1 = "C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\example1.txt";
+	ifstream inputFile(a0);
+	ofstream outputFile(a1, ios_base::trunc);
+
+	if (inputFile.is_open() || outputFile.is_open()) {
+		vector<string> lines;
+		string line;
+
+		while (getline(inputFile, line)) {
+			lines.push_back(line);
+		}
+
+		std::sort(lines.begin(), lines.end());
+
+		for (const auto& sortedLine : lines) {
+			outputFile << sortedLine << '\n';
+		}
+
+		inputFile.close();
+		outputFile.close();
+	}
+}
