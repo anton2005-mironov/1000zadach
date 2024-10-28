@@ -1166,12 +1166,14 @@ void File22() {
 	}
 	file.close();
 
-	double* array = new double [i];
+	vector<double> numbers;
+	double number;
 	i = 0;
 
 	ifstream file1(filename);
 	if (file1.is_open()) {
-		while (file1 >> array[i]) {
+		while (file1 >> number) {
+			numbers.push_back(number);
 			i++;
 		}
 	}
@@ -1179,13 +1181,11 @@ void File22() {
 
 	ofstream file2(filename1, ios_base::out | ios_base::trunc);
 	for (int j = i - 1; j > 0; j--) {
-		if ((array[j] < array[j + 1] && array[j] < array[j - 1]) || (array[j] > array[j + 1] && array[j] > array[j - 1])) {
+		if ((numbers[j] < numbers[j + 1] && numbers[j] < numbers[j - 1]) || (numbers[j] > numbers[j + 1] && numbers[j] > numbers[j - 1])) {
 			file2 << j + 1;
 		}
 	}
 	file2.close();
-
-	delete[] array;
 
 	ifstream file3(filename1);
 	if (file3.is_open()) {
@@ -1213,12 +1213,14 @@ void File23() {
 	}
 	file.close();
 
-	double* array = new double[i];
+	vector<double> numbers;
+	double number;
 	i = 0;
 
 	ifstream file1(filename);
 	if (file1.is_open()) {
-		while (file1 >> array[i]) {
+		while (file1 >> number) {
+			numbers.push_back(number);
 			i++;
 		}
 	}
@@ -1227,7 +1229,7 @@ void File23() {
 	int count = 1;
 	ofstream file2(filename1, ios_base::out | ios_base::trunc);
 	for (int j = 1; j < i; j++) {
-		if (array[j] < array[j - 1]) {
+		if (numbers[j] < numbers[j - 1]) {
 			count++;
 		}
 		else {
@@ -1238,8 +1240,6 @@ void File23() {
 	}
 	file2 << count;
 	file2.close();
-
-	delete[] array;
 
 	ifstream file3(filename1);
 	if (file3.is_open()) {
@@ -1267,12 +1267,14 @@ void File24() {
 	}
 	file.close();
 
-	double* array = new double[i];
+	vector<double> numbers;
+	double number;
 	i = 0;
 
 	ifstream file1(filename);
 	if (file1.is_open()) {
-		while (file1 >> array[i]) {
+		while (file1 >> number) {
+			numbers.push_back(number);
 			i++;
 		}
 	}
@@ -1280,16 +1282,16 @@ void File24() {
 
 	int count = 1;
 	int p;
-	if (array[1] < array[0]) {
+	if (numbers[1] < numbers[0]) {
 		p = 0;
 	}
-	else if (array[1] > array[0]) {
+	else if (numbers[1] > numbers[0]) {
 		p = 1;
 	}
 	ofstream file2(filename1, ios_base::out | ios_base::trunc);
 	for (int j = 1; j < i; j++) {
 		if (p == 0) {
-			if (array[j] < array[j - 1]) {
+			if (numbers[j] < numbers[j - 1]) {
 				count++;
 			}
 			else {
@@ -1300,7 +1302,7 @@ void File24() {
 			}
 		}
 		else if (p == 1) {
-			if (array[j] > array[j - 1]) {
+			if (numbers[j] > numbers[j - 1]) {
 				count++;
 			}
 			else {
@@ -1313,8 +1315,6 @@ void File24() {
 	}
 	file2 << count;
 	file2.close();
-
-	delete[] array;
 
 	ifstream file3(filename1);
 	if (file3.is_open()) {
@@ -3383,7 +3383,7 @@ void File64() {
 	string a0 = "C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\example.txt";
 	string a1 = "C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\example1.txt";
 	ifstream inputFile(a0);
-	ofstream outputFile(a1);
+	ofstream outputFile(a1, ios_base::trunc);
 
 	if (inputFile.is_open() || outputFile.is_open()) {
 		vector<string> lines;
