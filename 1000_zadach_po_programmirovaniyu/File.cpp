@@ -1739,12 +1739,14 @@ void File33() {
 	}
 	file.close();
 
-	double* array = new double[i];
+	vector<double> numbers;
+	double number;
 	i = 0;
 
 	ifstream file1(filename);
 	if (file1.is_open()) {
-		while (file1 >> array[i]) {
+		while (file1 >> number) {
+			numbers.push_back(number);
 			i++;
 		}
 	}
@@ -1752,11 +1754,10 @@ void File33() {
 
 	ofstream file2(filename, ios_base::out | ios_base::trunc);
 	for (int j = 0; j < i; j += 2) {
-		file2 << array[j];
+		file2 << numbers[j];
 		file2 << ' ';
 	}
 	file2.close();
-	delete[] array;
 
 	ifstream file3(filename);
 	if (file3.is_open()) {
@@ -1783,12 +1784,14 @@ void File34() {
 	}
 	file.close();
 
-	double* array = new double[i];
+	vector<double> numbers;
+	double number;
 	i = 0;
 
 	ifstream file1(filename);
 	if (file1.is_open()) {
-		while (file1 >> array[i]) {
+		while (file1 >> number) {
+			numbers.push_back(number);
 			i++;
 		}
 	}
@@ -1796,13 +1799,12 @@ void File34() {
 
 	ofstream file2(filename, ios_base::out | ios_base::trunc);
 	for (int j = 0; j < i; j++) {
-		if (array[j] >= 0) {
-			file2 << array[j];
+		if (numbers[j] >= 0) {
+			file2 << numbers[j];
 			file2 << ' ';
 		}
 	}
 	file2.close();
-	delete[] array;
 
 	ifstream file3(filename);
 	if (file3.is_open()) {
@@ -1829,12 +1831,14 @@ void File35() {
 	}
 	file.close();
 
-	double* array = new double[i];
+	vector<double> numbers;
+	double number;
 	i = 0;
 
 	ifstream file1(filename);
 	if (file1.is_open()) {
-		while (file1 >> array[i]) {
+		while (file1 >> number) {
+			numbers.push_back(number);
 			i++;
 		}
 	}
@@ -1846,11 +1850,10 @@ void File35() {
 		file2 << ' ';
 	}
 	for (int j = 0; j < i; j++) {
-		file2 << array[j];
+		file2 << numbers[j];
 		file2 << ' ';
 	}
 	file2.close();
-	delete[] array;
 
 	ifstream file3(filename);
 	if (file3.is_open()) {
@@ -1877,12 +1880,14 @@ void File36() {
 	}
 	file.close();
 
-	double* array = new double[i];
+	vector<double> numbers;
+	double number;
 	i = 0;
 
 	ifstream file1(filename);
 	if (file1.is_open()) {
-		while (file1 >> array[i]) {
+		while (file1 >> number) {
+			numbers.push_back(number);
 			i++;
 		}
 	}
@@ -1890,15 +1895,14 @@ void File36() {
 
 	ofstream file2(filename, ios_base::out | ios_base::trunc);
 	for (int j = 0; j < i; j++) {
-		file2 << array[j];
+		file2 << numbers[j];
 		file2 << ' ';
 	}
 	for (int j = 0; j < i; j++) {
-		file2 << array[j];
+		file2 << numbers[j];
 		file2 << ' ';
 	}
 	file2.close();
-	delete[] array;
 
 	ifstream file3(filename);
 	if (file3.is_open()) {
@@ -1925,12 +1929,14 @@ void File37() {
 	}
 	file.close();
 
-	double* array = new double[i];
+	vector<double> numbers;
+	double number;
 	i = 0;
 
 	ifstream file1(filename);
 	if (file1.is_open()) {
-		while (file1 >> array[i]) {
+		while (file1 >> number) {
+			numbers.push_back(number);
 			i++;
 		}
 	}
@@ -1938,15 +1944,14 @@ void File37() {
 
 	ofstream file2(filename, ios_base::out | ios_base::trunc);
 	for (int j = 0; j < i; j++) {
-		file2 << array[j];
+		file2 << numbers[j];
 		file2 << ' ';
 	}
 	for (int j = i - 1; j >= 0; j--) {
-		file2 << array[j];
+		file2 << numbers[j];
 		file2 << ' ';
 	}
 	file2.close();
-	delete[] array;
 
 	ifstream file3(filename);
 	if (file3.is_open()) {
@@ -1973,12 +1978,14 @@ void File38() {
 	}
 	file.close();
 
-	double* array = new double[i];
+	vector<double> numbers;
+	double number;
 	i = 0;
 
 	ifstream file1(filename);
 	if (file1.is_open()) {
-		while (file1 >> array[i]) {
+		while (file1 >> number) {
+			numbers.push_back(number);
 			i++;
 		}
 	}
@@ -1986,15 +1993,14 @@ void File38() {
 
 	ofstream file2(filename, ios_base::out | ios_base::trunc);
 	for (int j = 0; j < i; j++) {
-		file2 << array[j];
+		file2 << numbers[j];
 		file2 << ' ';
 		if (j % 2 == 0 || j == 0) {
-			file2 << array[j];
+			file2 << numbers[j];
 			file2 << ' ';
 		}
 	}
 	file2.close();
-	delete[] array;
 
 	ifstream file3(filename);
 	if (file3.is_open()) {
@@ -2021,12 +2027,14 @@ void File39() {
 	}
 	file.close();
 
-	double* array = new double[i];
+	vector<double> numbers;
+	double number;
 	i = 0;
 
 	ifstream file1(filename);
 	if (file1.is_open()) {
-		while (file1 >> array[i]) {
+		while (file1 >> number) {
+			numbers.push_back(number);
 			i++;
 		}
 	}
@@ -2034,15 +2042,14 @@ void File39() {
 
 	ofstream file2(filename, ios_base::out | ios_base::trunc);
 	for (int j = 0; j < i; j++) {
-		file2 << array[j];
+		file2 << numbers[j];
 		file2 << ' ';
 		if (j >= 5 && j <= 10) {
-			file2 << array[j];
+			file2 << numbers[j];
 			file2 << ' ';
 		}
 	}
 	file2.close();
-	delete[] array;
 
 	ifstream file3(filename);
 	if (file3.is_open()) {
@@ -2069,12 +2076,14 @@ void File40() {
 	}
 	file.close();
 
-	double* array = new double[i];
+	vector<double> numbers;
+	double number;
 	i = 0;
 
 	ifstream file1(filename);
 	if (file1.is_open()) {
-		while (file1 >> array[i]) {
+		while (file1 >> number) {
+			numbers.push_back(number);
 			i++;
 		}
 	}
@@ -2083,7 +2092,7 @@ void File40() {
 	ofstream file2(filename, ios_base::out | ios_base::trunc);
 	for (int j = 0; j < i; j++) {
 		if (j % 2 == 0 || j == 0) {
-			file2 << array[j];
+			file2 << numbers[j];
 			file2 << ' ';
 		}
 		else {
@@ -2092,7 +2101,6 @@ void File40() {
 		}
 	}
 	file2.close();
-	delete[] array;
 
 	ifstream file3(filename);
 	if (file3.is_open()) {
@@ -2119,12 +2127,14 @@ void File41() {
 	}
 	file.close();
 
-	double* array = new double[i];
+	vector<double> numbers;
+	double number;
 	i = 0;
 
 	ifstream file1(filename);
 	if (file1.is_open()) {
-		while (file1 >> array[i]) {
+		while (file1 >> number) {
+			numbers.push_back(number);
 			i++;
 		}
 	}
@@ -2132,17 +2142,16 @@ void File41() {
 
 	ofstream file2(filename, ios_base::out | ios_base::trunc);
 	for (int j = 0; j < i; j++) {
-		if (!(array[j] > 0)) {
-			file2 << array[j];
+		if (numbers[j] > 0) {
+			file2 << "000";
 			file2 << ' ';
 		}
 		else {
-			file2 << "000";
+			file2 << numbers[j];
 			file2 << ' ';
 		}
 	}
 	file2.close();
-	delete[] array;
 
 	ifstream file3(filename);
 	if (file3.is_open()) {
