@@ -3619,9 +3619,9 @@ void File70() {
 	inputFile.close();
 
 	ofstream File("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\summer_winter_another.txt", ios_base::trunc);
-	for (auto i = months.rbegin(); i != months.rend(); ++i) {
-		if (months[i] > 0 && months[i] < 3 || months[i] == 12) {
-			File << days[i] << ' ' << months[i] << ' ' << years[i] << endl;
+	for (size_t i = months.size(); i > 0; --i) {
+		if (months[i - 1] > 0 && months[i - 1] < 3 || months[i - 1] == 12) {
+			File << days[i - 1] << ' ' << months[i - 1] << ' ' << years[i - 1] << endl;
 		}
 	}
 	File.close();
