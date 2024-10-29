@@ -435,6 +435,12 @@ void File(bool tr, int begin)
 			cout << endl << endl;
 			break;
 
+		case 70:
+			File70();
+
+			cout << endl << endl;
+			break;
+
 		default:
 			cout << "Задача отсутствует.";
 			cout << endl << endl;
@@ -3626,5 +3632,5 @@ void File70() {
 	}
 	File.close();
 
-	cout << "Летние даты успешно записаны в файлы." << endl;
+	cout << "Зимние даты успешно записаны в файлы." << endl;
 }
