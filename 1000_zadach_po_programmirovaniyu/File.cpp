@@ -429,6 +429,12 @@ void File(bool tr, int begin)
 			cout << endl << endl;
 			break;
 
+		case 69:
+			File69();
+
+			cout << endl << endl;
+			break;
+
 		default:
 			cout << "«адача отсутствует.";
 			cout << endl << endl;
@@ -3555,10 +3561,40 @@ void File68() {
 	monthsFile.close();
 
 	ofstream yearsFile("C:\\Users\\Anton\\source\\repos\\јнтон C++\\1000_zadach_po_programmirovaniyu\\years.txt", ios_base::trunc);
-	for (auto it = years.rbegin(); it != years.rend(); ++it) {
+	for (auto it = years.rbegin(); it != years.rend(); ++it) { 
 		yearsFile << *it << endl;
 	}
 	yearsFile.close();
 
-	cout << "ƒни и мес€цы успешно записаны в файлы." << endl;
+	cout << "ћес€цы и годы успешно записаны в файлы." << endl;
+}
+
+void File69() {
+	ifstream inputFile("C:\\Users\\Anton\\source\\repos\\јнтон C++\\1000_zadach_po_programmirovaniyu\\data.txt");
+
+	vector<int> days;
+	vector<int> months;
+	vector<int> years;
+	string line;
+
+	while (getline(inputFile, line)) {
+		string dayStr = line.substr(0, 2);
+		string monthStr = line.substr(2, 2);
+		string yearStr = line.substr(4, 5);
+
+		days.push_back(stoi(dayStr));
+		months.push_back(stoi(monthStr));
+		years.push_back(stoi(yearStr));
+	}
+	inputFile.close();
+
+	ofstream File("C:\\Users\\Anton\\source\\repos\\јнтон C++\\1000_zadach_po_programmirovaniyu\\summer_winter_another.txt", ios_base::trunc);
+	for (size_t i = 0; i < months.size(); ++i) {
+		if (months[i] > 5 && months[i] < 9) {
+			File << days[i] << ' ' << months[i] << ' ' << years[i] << endl;
+		}
+	}
+	File.close();
+
+	cout << "Ћетние даты успешно записаны в файлы." << endl;
 }
