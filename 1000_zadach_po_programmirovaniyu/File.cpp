@@ -3614,7 +3614,7 @@ void File69() {
 	inputFile.close();
 
 	ofstream File("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\summer_winter_another.txt", ios_base::trunc);
-	for (size_t i = 0; i < months.size(); ++i) {
+	for (int i = 0; i < months.size(); ++i) {
 		if (months[i] > 5 && months[i] < 9) {
 			File << days[i] << ' ' << months[i] << ' ' << years[i] << endl;
 		}
@@ -3644,7 +3644,7 @@ void File70() {
 	inputFile.close();
 
 	ofstream File("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\summer_winter_another.txt", ios_base::trunc);
-	for (size_t i = months.size(); i > 0; --i) {
+	for (int i = months.size(); i > 0; --i) {
 		if (months[i - 1] > 0 && months[i - 1] < 3 || months[i - 1] == 12) {
 			File << days[i - 1] << ' ' << months[i - 1] << ' ' << years[i - 1] << endl;
 		}
@@ -3675,7 +3675,7 @@ void File71() {
 	inputFile.close();
 
 	ofstream File("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\summer_winter_another.txt", ios_base::trunc);
-	for (size_t i = 0; i < months.size(); ++i) {
+	for (int i = 0; i < months.size(); ++i) {
 		if (months[i] > 2 && months[i] < 6) {
 			if (spring[2] >= years[i]) {
 				if (spring[1] >= months[i]) {
@@ -3702,7 +3702,7 @@ void File72() {
 	vector<int> days;
 	vector<int> months;
 	vector<int> years;
-	int spring[3] = { 0, 0, 0 };
+	int autumn[3] = { 0, 0, 0 };
 	string line;
 
 	while (getline(inputFile, line)) {
@@ -3717,21 +3717,21 @@ void File72() {
 	inputFile.close();
 
 	ofstream File("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\summer_winter_another.txt", ios_base::trunc);
-	for (size_t i = 0; i < months.size(); ++i) {
+	for (int i = 0; i < months.size(); ++i) {
 		if (months[i] > 8 && months[i] < 12) {
-			if (spring[2] <= years[i]) {
-				if (spring[1] <= months[i]) {
-					if (spring[0] <= days[i]) {
-						spring[0] = days[i];
-						spring[1] = months[i];
-						spring[2] = years[i];
+			if (autumn[2] <= years[i]) {
+				if (autumn[1] <= months[i]) {
+					if (autumn[0] <= days[i]) {
+						autumn[0] = days[i];
+						autumn[1] = months[i];
+						autumn[2] = years[i];
 					}
 				}
 			}
 		}
 	}
-	if (spring[0] != 0) {
-		File << spring[0] << ' ' << spring[1] << ' ' << spring[2] << endl;
+	if (autumn[0] != 0) {
+		File << autumn[0] << ' ' << autumn[1] << ' ' << autumn[2] << endl;
 	}
 	File.close();
 
@@ -3744,7 +3744,6 @@ void File73() {
 	vector<int> days;
 	vector<int> months;
 	vector<int> years;
-	int spring[3] = { 0, 0, 0 };
 	string line;
 
 	while (getline(inputFile, line)) {
@@ -3758,9 +3757,71 @@ void File73() {
 	}
 	inputFile.close();
 
-	ofstream File("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\summer_winter_another.txt", ios_base::trunc);
+	int a;
+	ofstream File("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\minus.txt", ios_base::trunc);
+	for (int i = 1; i < months.size();) {
+		if (years[i] < years[i - 1]) {
+			a = years[i];
+			years[i] = years[i - 1];
+			years[i - 1] = a;
+			a = months[i];
+			months[i] = months[i - 1];
+			months[i - 1] = a;
+			a = days[i];
+			days[i] = days[i - 1];
+			days[i - 1] = a;
+			if (i != 1) {
+				i--;
+			}
+		}
+		else {
+			i++;
+		}
+	}
 
+	for (int i = 1; i < months.size();) {
+		if (months[i] < months[i - 1] && years[i] == years[i - 1]) {
+			a = years[i];
+			years[i] = years[i - 1];
+			years[i - 1] = a;
+			a = months[i];
+			months[i] = months[i - 1];
+			months[i - 1] = a;
+			a = days[i];
+			days[i] = days[i - 1];
+			days[i - 1] = a;
+			if (i != 1) {
+				i--;
+			}
+		}
+		else {
+			i++;
+		}
+	}
+
+	for (int i = 1; i < months.size();) {
+		if (days[i] < days[i - 1] && months[i] == months[i - 1] && years[i] == years[i - 1]) {
+			a = years[i];
+			years[i] = years[i - 1];
+			years[i - 1] = a;
+			a = months[i];
+			months[i] = months[i - 1];
+			months[i - 1] = a;
+			a = days[i];
+			days[i] = days[i - 1];
+			days[i - 1] = a;
+			if (i != 1) {
+				i--;
+			}
+		}
+		else {
+			i++;
+		}
+	}
+	for (int i = 1; i < months.size(); i++) {
+		File << days[i] << ' ' << months[i] << ' ' << years[i] << endl;
+	}
 	File.close();
 
-	cout << "Осенняя дата успешно записана в файл." << endl;
+	cout << "Даты записаны в файл." << endl;
 }
