@@ -441,6 +441,12 @@ void File(bool tr, int begin)
 			cout << endl << endl;
 			break;
 
+		case 71:
+			File71();
+
+			cout << endl << endl;
+			break;
+
 		default:
 			cout << "Задача отсутствует.";
 			cout << endl << endl;
@@ -3633,4 +3639,34 @@ void File70() {
 	File.close();
 
 	cout << "Зимние даты успешно записаны в файлы." << endl;
+}
+
+void File71() {
+	ifstream inputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\data.txt");
+
+	vector<int> days;
+	vector<int> months;
+	vector<int> years;
+	string line;
+
+	while (getline(inputFile, line)) {
+		string dayStr = line.substr(0, 2);
+		string monthStr = line.substr(2, 2);
+		string yearStr = line.substr(4, 5);
+
+		days.push_back(stoi(dayStr));
+		months.push_back(stoi(monthStr));
+		years.push_back(stoi(yearStr));
+	}
+	inputFile.close();
+
+	ofstream File("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\summer_winter_another.txt", ios_base::trunc);
+	for (size_t i = 0; i < months.size(); ++i) {
+		if (months[i] > 2 && months[i] < 6) {
+			File << days[i] << ' ' << months[i] << ' ' << years[i] << endl;
+		}
+	}
+	File.close();
+
+	cout << "Весенняя дата успешно записана в файлы." << endl;
 }
