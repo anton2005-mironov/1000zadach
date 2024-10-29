@@ -3598,3 +3598,33 @@ void File69() {
 
 	cout << "Летние даты успешно записаны в файлы." << endl;
 }
+
+void File70() {
+	ifstream inputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\data.txt");
+
+	vector<int> days;
+	vector<int> months;
+	vector<int> years;
+	string line;
+
+	while (getline(inputFile, line)) {
+		string dayStr = line.substr(0, 2);
+		string monthStr = line.substr(2, 2);
+		string yearStr = line.substr(4, 5);
+
+		days.push_back(stoi(dayStr));
+		months.push_back(stoi(monthStr));
+		years.push_back(stoi(yearStr));
+	}
+	inputFile.close();
+
+	ofstream File("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\summer_winter_another.txt", ios_base::trunc);
+	for (auto i = months.rbegin(); i != months.rend(); ++i) {
+		if (months[i] > 0 && months[i] < 3 || months[i] == 12) {
+			File << days[i] << ' ' << months[i] << ' ' << years[i] << endl;
+		}
+	}
+	File.close();
+
+	cout << "Летние даты успешно записаны в файлы." << endl;
+}
