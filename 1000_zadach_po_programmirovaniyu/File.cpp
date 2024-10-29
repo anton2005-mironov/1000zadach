@@ -454,6 +454,12 @@ void File(bool tr, int begin)
 			cout << endl << endl;
 			break;
 
+		case 73:
+			File73();
+
+			cout << endl << endl;
+			break;
+
 		default:
 			cout << "«адача отсутствует.";
 			cout << endl << endl;
@@ -3727,6 +3733,33 @@ void File72() {
 	if (spring[0] != 0) {
 		File << spring[0] << ' ' << spring[1] << ' ' << spring[2] << endl;
 	}
+	File.close();
+
+	cout << "ќсенн€€ дата успешно записана в файл." << endl;
+}
+
+void File73() {
+	ifstream inputFile("C:\\Users\\Anton\\source\\repos\\јнтон C++\\1000_zadach_po_programmirovaniyu\\data.txt");
+
+	vector<int> days;
+	vector<int> months;
+	vector<int> years;
+	int spring[3] = { 0, 0, 0 };
+	string line;
+
+	while (getline(inputFile, line)) {
+		string dayStr = line.substr(0, 2);
+		string monthStr = line.substr(2, 2);
+		string yearStr = line.substr(4, 5);
+
+		days.push_back(stoi(dayStr));
+		months.push_back(stoi(monthStr));
+		years.push_back(stoi(yearStr));
+	}
+	inputFile.close();
+
+	ofstream File("C:\\Users\\Anton\\source\\repos\\јнтон C++\\1000_zadach_po_programmirovaniyu\\summer_winter_another.txt", ios_base::trunc);
+
 	File.close();
 
 	cout << "ќсенн€€ дата успешно записана в файл." << endl;
