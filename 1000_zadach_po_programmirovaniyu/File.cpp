@@ -3615,7 +3615,7 @@ void File69() {
 	}
 	File.close();
 
-	cout << "Летние даты успешно записаны в файлы." << endl;
+	cout << "Летние даты успешно записаны в файл." << endl;
 }
 
 void File70() {
@@ -3645,7 +3645,7 @@ void File70() {
 	}
 	File.close();
 
-	cout << "Зимние даты успешно записаны в файлы." << endl;
+	cout << "Зимние даты успешно записаны в файл." << endl;
 }
 
 void File71() {
@@ -3687,7 +3687,7 @@ void File71() {
 	}
 	File.close();
 
-	cout << "Весенняя дата успешно записана в файлы." << endl;
+	cout << "Весенняя дата успешно записана в файл." << endl;
 }
 
 void File72() {
@@ -3712,7 +3712,7 @@ void File72() {
 
 	ofstream File("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\summer_winter_another.txt", ios_base::trunc);
 	for (size_t i = 0; i < months.size(); ++i) {
-		if (months[i] > 2 && months[i] < 6) {
+		if (months[i] > 8 && months[i] < 12) {
 			if (spring[2] <= years[i]) {
 				if (spring[1] <= months[i]) {
 					if (spring[0] <= days[i]) {
@@ -3729,5 +3729,5 @@ void File72() {
 	}
 	File.close();
 
-	cout << "Весенняя дата успешно записана в файлы." << endl;
+	cout << "Осенняя дата успешно записана в файл." << endl;
 }
