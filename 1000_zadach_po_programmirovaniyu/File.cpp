@@ -6,6 +6,7 @@
 #include <filesystem>
 #include <string>
 #include <vector>
+#include <array>
 #include <cstdio>
 
 using namespace std;
@@ -3647,6 +3648,7 @@ void File71() {
 	vector<int> days;
 	vector<int> months;
 	vector<int> years;
+	int spring[3] = {100, 100, 10000};
 	string line;
 
 	while (getline(inputFile, line)) {
@@ -3663,8 +3665,19 @@ void File71() {
 	ofstream File("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\summer_winter_another.txt", ios_base::trunc);
 	for (size_t i = 0; i < months.size(); ++i) {
 		if (months[i] > 2 && months[i] < 6) {
-			File << days[i] << ' ' << months[i] << ' ' << years[i] << endl;
+			if (spring[2] >= years[i]) {
+				if (spring[1] >= months[i]) {
+					if (spring[0] > days[i]) {
+						spring[0] = days[i];
+						spring[1] = months[i];
+						spring[2] = years[i];
+					}
+				}
+			}
 		}
+	}
+	if (spring[0] != 100) {
+		File << spring[0] << ' ' << spring[1] << ' ' << spring[2] << endl;
 	}
 	File.close();
 
