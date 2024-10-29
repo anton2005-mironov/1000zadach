@@ -448,6 +448,12 @@ void File(bool tr, int begin)
 			cout << endl << endl;
 			break;
 
+		case 72:
+			File72();
+
+			cout << endl << endl;
+			break;
+
 		default:
 			cout << "Задача отсутствует.";
 			cout << endl << endl;
@@ -3667,7 +3673,7 @@ void File71() {
 		if (months[i] > 2 && months[i] < 6) {
 			if (spring[2] >= years[i]) {
 				if (spring[1] >= months[i]) {
-					if (spring[0] > days[i]) {
+					if (spring[0] >= days[i]) {
 						spring[0] = days[i];
 						spring[1] = months[i];
 						spring[2] = years[i];
@@ -3677,6 +3683,48 @@ void File71() {
 		}
 	}
 	if (spring[0] != 100) {
+		File << spring[0] << ' ' << spring[1] << ' ' << spring[2] << endl;
+	}
+	File.close();
+
+	cout << "Весенняя дата успешно записана в файлы." << endl;
+}
+
+void File72() {
+	ifstream inputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\data.txt");
+
+	vector<int> days;
+	vector<int> months;
+	vector<int> years;
+	int spring[3] = { 0, 0, 0 };
+	string line;
+
+	while (getline(inputFile, line)) {
+		string dayStr = line.substr(0, 2);
+		string monthStr = line.substr(2, 2);
+		string yearStr = line.substr(4, 5);
+
+		days.push_back(stoi(dayStr));
+		months.push_back(stoi(monthStr));
+		years.push_back(stoi(yearStr));
+	}
+	inputFile.close();
+
+	ofstream File("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\summer_winter_another.txt", ios_base::trunc);
+	for (size_t i = 0; i < months.size(); ++i) {
+		if (months[i] > 2 && months[i] < 6) {
+			if (spring[2] <= years[i]) {
+				if (spring[1] <= months[i]) {
+					if (spring[0] <= days[i]) {
+						spring[0] = days[i];
+						spring[1] = months[i];
+						spring[2] = years[i];
+					}
+				}
+			}
+		}
+	}
+	if (spring[0] != 0) {
 		File << spring[0] << ' ' << spring[1] << ' ' << spring[2] << endl;
 	}
 	File.close();
