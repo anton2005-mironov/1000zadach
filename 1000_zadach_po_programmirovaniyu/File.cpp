@@ -3860,7 +3860,7 @@ void File74() {
 	int currentRow = 1, currentCol = 1;
 	double result = 0;
 	bool found = false;
-	while (file >> a) {
+	while (file1 >> a) {
 		if (currentCol == J && currentRow == I) {
 			result = a;
 			found = true;
