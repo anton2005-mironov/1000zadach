@@ -3894,16 +3894,16 @@ void File75() {
 	ifstream inputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\double.txt");
 	ofstream outputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\another_double.txt", ios_base::trunc);
 
-	for (int j = 0; j < n; ++j) {
-		for (int i = 0; i < n; ++i) {
+	for (int i = 0; i < n; ++i) {
+		for (int j = 0; j < n; ++j) {
 			double value;
 
-			inputFile.seekg((j * n + i) * sizeof(double), std::ios::beg);
+			inputFile.seekg((i * n + j) * sizeof(double), std::ios::beg);
 			inputFile.read(reinterpret_cast<char*>(&value), sizeof(double));
 
+			outputFile.seekp((j * n + i) * sizeof(double), std::ios::beg);
 			outputFile.write(reinterpret_cast<char*>(&value), sizeof(double));
 		}
-		outputFile << '\n';
 	}
 
 	inputFile.close();
