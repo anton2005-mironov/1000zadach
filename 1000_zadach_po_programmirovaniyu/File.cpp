@@ -3888,5 +3888,25 @@ void File74() {
 }
 
 void File75() {
+	const int n = 20; 
+	ifstream inputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\double.txt");
+	ofstream outputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\another_double.txt");
 
+	for (int j = 0; j < n; ++j) {
+		for (int i = 0; i < n; ++i) {
+			double value;
+
+			inputFile.seekg((j * n + i) * sizeof(float), std::ios::beg);
+			inputFile.read(reinterpret_cast<char*>(&value), sizeof(float));
+
+			outputFile.write(reinterpret_cast<char*>(&value), sizeof(float));
+
+			if (i == n - 1) {
+				outputFile << '\n';
+			}
+		}
+	}
+
+	inputFile.close();
+	outputFile.close();
 }
