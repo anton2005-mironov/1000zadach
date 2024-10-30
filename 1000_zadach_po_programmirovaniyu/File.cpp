@@ -3837,9 +3837,16 @@ void File74() {
 	double a;
 	ofstream file("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\double.txt", ios_base::trunc);
 	for (int i = 1; i < 20; i++) {
-		a = rand() % (100 - 1 + 1) + 1;
-		a += (rand() % (999 - 1 + 1) + 1) * 0.001;
+		for (int j = 0; j < 20; j++) {
+			a = rand() % (100 - 1 + 1) + 1;
+			a += (rand() % (999 - 1 + 1) + 1) * 0.001;
+			file << a << ' ';
+		}
+		file << '/0';
 	}
+	a = rand() % (100 - 1 + 1) + 1;
+	a += (rand() % (999 - 1 + 1) + 1) * 0.001;
+	file << a << ' ';
 	file.close();
 	int I, J;
 	cout << "Введите I: ";
@@ -3848,18 +3855,17 @@ void File74() {
 	cin >> J;
 
 	ifstream file("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\double.txt");
-	double value;
 	int currentRow = 1, currentCol = 1;
 	double result = 0;
 	bool found = false;
-	while (file >> value) {
+	while (file >> a) {
 		if (currentCol == J && currentRow == I) {
-			result = value;
+			result = a;
 			found = true;
 			break;
 		}
 		currentCol++;
-		if (currentCol > currentRow) { // переходим на следующую строку
+		if (currentCol > currentRow) {
 			currentRow++;
 			currentCol = 1;
 		}
