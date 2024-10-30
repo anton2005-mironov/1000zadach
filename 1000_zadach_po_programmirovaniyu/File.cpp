@@ -8,6 +8,7 @@
 #include <vector>
 #include <array>
 #include <cstdio>
+#include <ctime>
 
 using namespace std;
 
@@ -3833,9 +3834,35 @@ void File73() {
 }
 
 void File74() {
+	double a;
+	ofstream file("C:\\Users\\Anton\\source\\repos\\јнтон C++\\1000_zadach_po_programmirovaniyu\\double.txt", ios_base::trunc);
+	for (int i = 1; i < 20; i++) {
+		a = rand() % (100 - 1 + 1) + 1;
+		a += (rand() % (999 - 1 + 1) + 1) * 0.001;
+	}
+	file.close();
 	int I, J;
 	cout << "¬ведите I: ";
 	cin >> I;
 	cout << "¬ведите J: ";
 	cin >> J;
+
+	ifstream file("C:\\Users\\Anton\\source\\repos\\јнтон C++\\1000_zadach_po_programmirovaniyu\\double.txt");
+	double value;
+	int currentRow = 1, currentCol = 1;
+	double result = 0;
+	bool found = false;
+	while (file >> a) {
+		if (currentCol == J && currentRow == I) {
+			result = value;
+			found = true;
+			break;
+		}
+		currentCol++;
+		if (currentCol > currentRow) { // переходим на следующую строку
+			currentRow++;
+			currentCol = 1;
+		}
+	}
+	file.close();
 }
