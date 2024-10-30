@@ -3842,11 +3842,13 @@ void File74() {
 			a += (rand() % (999 - 1 + 1) + 1) * 0.001;
 			file << a << ' ';
 		}
-		file << '/0';
+		file << '\n';
 	}
-	a = rand() % (100 - 1 + 1) + 1;
-	a += (rand() % (999 - 1 + 1) + 1) * 0.001;
-	file << a << ' ';
+	for (int j = 0; j < 20; j++) {
+		a = rand() % (100 - 1 + 1) + 1;
+		a += (rand() % (999 - 1 + 1) + 1) * 0.001;
+		file << a << ' ';
+	}
 	file.close();
 	int I, J;
 	cout << "Введите I: ";
@@ -3854,7 +3856,7 @@ void File74() {
 	cout << "Введите J: ";
 	cin >> J;
 
-	ifstream file("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\double.txt");
+	ifstream file1("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\double.txt");
 	int currentRow = 1, currentCol = 1;
 	double result = 0;
 	bool found = false;
@@ -3870,5 +3872,5 @@ void File74() {
 			currentCol = 1;
 		}
 	}
-	file.close();
+	file1.close();
 }
