@@ -3902,11 +3902,8 @@ void File75() {
 			inputFile.read(reinterpret_cast<char*>(&value), sizeof(double));
 
 			outputFile.write(reinterpret_cast<char*>(&value), sizeof(double));
-
-			if (i == n - 1) {
-				outputFile << '\n';
-			}
 		}
+		outputFile << '\n';
 	}
 
 	inputFile.close();
