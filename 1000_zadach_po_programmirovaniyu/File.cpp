@@ -3857,21 +3857,26 @@ void File74() {
 	cout << "Введите J: ";
 	cin >> J;
 
-	ifstream file1("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\double.txt");
-	int I1 = 1, J1 = 1;
-	double result = 0;
-	while (file1 >> a) {
-		if (J1 == J && I1 == I) {
-			result = a;
-			break;
-		}
-		J1++;
-		if (J1 > 20) {
-			I1++;
-			J1 = 1;
-		}
+	if (I > 20 || J > 20) {
+		cout << 0;
 	}
-	file1.close();
+	else {
+		ifstream file1("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\double.txt");
+		int I1 = 1, J1 = 1;
+		double result = 0;
+		while (file1 >> a) {
+			if (J1 == J && I1 == I) {
+				result = a;
+				break;
+			}
+			J1++;
+			if (J1 > 20) {
+				I1++;
+				J1 = 1;
+			}
+		}
+		file1.close();
 
-	cout << result;
+		cout << result;
+	}
 }
