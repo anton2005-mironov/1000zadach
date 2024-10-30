@@ -3853,11 +3853,14 @@ void File74() {
 		a += (rand() % (999 - 1 + 1) + 1) * 0.001;
 		file << '\n';
 	}
-	for (int j = 0; j < 20; j++) {
+	for (int j = 1; j < 20; j++) {
 		a = rand() % (100 - 1 + 1) + 1;
 		a += (rand() % (999 - 1 + 1) + 1) * 0.001;
 		file << a << ' ';
 	}
+	a = rand() % (100 - 1 + 1) + 1;
+	a += (rand() % (999 - 1 + 1) + 1) * 0.001;
+	file << '\n';
 	file.close();
 	int I, J;
 	cout << "Введите I: ";
@@ -3890,20 +3893,22 @@ void File74() {
 }
 
 void File75() {
-	const int n = 20; 
+	const int n = 20;
+	int matrix[n][n];
 	ifstream inputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\double.txt");
 	ofstream outputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\another_double.txt", ios_base::trunc);
 
 	for (int i = 0; i < n; ++i) {
 		for (int j = 0; j < n; ++j) {
-			double value;
-
-			inputFile.seekg((i * n + j) * sizeof(double), std::ios::beg);
-			inputFile.read(reinterpret_cast<char*>(&value), sizeof(double));
-
-			outputFile.seekp((j * n + i) * sizeof(double), std::ios::beg);
-			outputFile.write(reinterpret_cast<char*>(&value), sizeof(double));
+			inputFile >> matrix[i][j];
 		}
+	}
+
+	for (int j = 0; j < n; ++j) {
+		for (int i = 0; i < n; ++i) {
+			outputFile << matrix[i][j] << ' ';
+		}
+		outputFile << endl;
 	}
 
 	inputFile.close();
