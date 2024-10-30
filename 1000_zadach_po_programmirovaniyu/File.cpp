@@ -3840,23 +3840,25 @@ void File73() {
 }
 
 void File74() {
-	//srand(time(0));
+	srand(time(0));
 	double a;
-	/*ofstream file("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\double.txt", ios_base::trunc);
+	ofstream file("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\double.txt", ios_base::trunc);
 	for (int i = 1; i < 20; i++) {
-		for (int j = 0; j < 20; j++) {
+		for (int j = 1; j < 20; j++) {
 			a = rand() % (100 - 1 + 1) + 1;
 			a += (rand() % (999 - 1 + 1) + 1) * 0.001;
 			file << a << ' ';
 		}
-		file << ' ';
+		a = rand() % (100 - 1 + 1) + 1;
+		a += (rand() % (999 - 1 + 1) + 1) * 0.001;
+		file << '\n';
 	}
 	for (int j = 0; j < 20; j++) {
 		a = rand() % (100 - 1 + 1) + 1;
 		a += (rand() % (999 - 1 + 1) + 1) * 0.001;
 		file << a << ' ';
 	}
-	file.close();*/
+	file.close();
 	int I, J;
 	cout << "Введите I: ";
 	cin >> I;
@@ -3890,16 +3892,16 @@ void File74() {
 void File75() {
 	const int n = 20; 
 	ifstream inputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\double.txt");
-	ofstream outputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\another_double.txt");
+	ofstream outputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\another_double.txt", ios_base::trunc);
 
 	for (int j = 0; j < n; ++j) {
 		for (int i = 0; i < n; ++i) {
 			double value;
 
-			inputFile.seekg((j * n + i) * sizeof(float), std::ios::beg);
-			inputFile.read(reinterpret_cast<char*>(&value), sizeof(float));
+			inputFile.seekg((j * n + i) * sizeof(double), std::ios::beg);
+			inputFile.read(reinterpret_cast<char*>(&value), sizeof(double));
 
-			outputFile.write(reinterpret_cast<char*>(&value), sizeof(float));
+			outputFile.write(reinterpret_cast<char*>(&value), sizeof(double));
 
 			if (i == n - 1) {
 				outputFile << '\n';
