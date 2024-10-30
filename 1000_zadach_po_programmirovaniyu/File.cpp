@@ -3844,23 +3844,18 @@ void File74() {
 	double a;
 	ofstream file("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\double.txt", ios_base::trunc);
 	for (int i = 1; i < 20; i++) {
-		for (int j = 1; j < 20; j++) {
+		for (int j = 0; j < 20; j++) {
 			a = rand() % (100 - 1 + 1) + 1;
 			a += (rand() % (999 - 1 + 1) + 1) * 0.001;
 			file << a << ' ';
 		}
-		a = rand() % (100 - 1 + 1) + 1;
-		a += (rand() % (999 - 1 + 1) + 1) * 0.001;
 		file << '\n';
 	}
-	for (int j = 1; j < 20; j++) {
+	for (int j = 0; j < 20; j++) {
 		a = rand() % (100 - 1 + 1) + 1;
 		a += (rand() % (999 - 1 + 1) + 1) * 0.001;
 		file << a << ' ';
 	}
-	a = rand() % (100 - 1 + 1) + 1;
-	a += (rand() % (999 - 1 + 1) + 1) * 0.001;
-	file << '\n';
 	file.close();
 	int I, J;
 	cout << "Введите I: ";
@@ -3894,7 +3889,7 @@ void File74() {
 
 void File75() {
 	const int n = 20;
-	int matrix[n][n];
+	double matrix[n][n];
 	ifstream inputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\double.txt");
 	ofstream outputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\another_double.txt", ios_base::trunc);
 
