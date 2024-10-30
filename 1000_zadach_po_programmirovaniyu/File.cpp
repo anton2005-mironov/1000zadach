@@ -460,6 +460,12 @@ void File(bool tr, int begin)
 			cout << endl << endl;
 			break;
 
+		case 74:
+			File74();
+
+			cout << endl << endl;
+			break;
+
 		default:
 			cout << "Задача отсутствует.";
 			cout << endl << endl;
@@ -3824,4 +3830,12 @@ void File73() {
 	File.close();
 
 	cout << "Даты записаны в файл." << endl;
+}
+
+void File74() {
+	int I, J;
+	cout << "Введите I: ";
+	cin >> I;
+	cout << "Введите J: ";
+	cin >> J;
 }
