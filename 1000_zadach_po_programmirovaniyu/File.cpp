@@ -3834,22 +3834,23 @@ void File73() {
 }
 
 void File74() {
+	//srand(time(0));
 	double a;
-	ofstream file("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\double.txt", ios_base::trunc);
+	/*ofstream file("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\double.txt", ios_base::trunc);
 	for (int i = 1; i < 20; i++) {
 		for (int j = 0; j < 20; j++) {
 			a = rand() % (100 - 1 + 1) + 1;
 			a += (rand() % (999 - 1 + 1) + 1) * 0.001;
 			file << a << ' ';
 		}
-		file << '\n';
+		file << ' ';
 	}
 	for (int j = 0; j < 20; j++) {
 		a = rand() % (100 - 1 + 1) + 1;
 		a += (rand() % (999 - 1 + 1) + 1) * 0.001;
 		file << a << ' ';
 	}
-	file.close();
+	file.close();*/
 	int I, J;
 	cout << "Введите I: ";
 	cin >> I;
@@ -3857,20 +3858,20 @@ void File74() {
 	cin >> J;
 
 	ifstream file1("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\double.txt");
-	int currentRow = 1, currentCol = 1;
+	int I1 = 1, J1 = 1;
 	double result = 0;
-	bool found = false;
 	while (file1 >> a) {
-		if (currentCol == J && currentRow == I) {
+		if (J1 == J && I1 == I) {
 			result = a;
-			found = true;
 			break;
 		}
-		currentCol++;
-		if (currentCol > currentRow) {
-			currentRow++;
-			currentCol = 1;
+		J1++;
+		if (J1 > 20) {
+			I1++;
+			J1 = 1;
 		}
 	}
 	file1.close();
+
+	cout << result;
 }
