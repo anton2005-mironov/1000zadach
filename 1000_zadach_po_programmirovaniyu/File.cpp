@@ -3918,18 +3918,27 @@ void File75() {
 
 void File76() {
 	srand(time(0));
-	const int n = 20;
+	const int n = 2;
 	double number;
 
 	double A[n][n];
+	for (int i = 0; i < n; i++) {
+		fill(A[i], A[i] + n, 0);
+	}
 	double B[n][n];
+	for (int i = 0; i < n; i++) {
+		fill(B[i], B[i] + n, 0);
+	}
 	double C[n][n];
+	for (int i = 0; i < n; i++) {
+		fill(C[i], C[i] + n, 0);
+	}
 
 	ofstream fileA("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\SA.txt", ios_base::trunc);
 	for (int i = 0; i < n; ++i) {
 		for (int j = 0; j < n; ++j) {
-			number = rand() % (100 - 1 + 1) + 1;
-			number += (rand() % (999 - 1 + 1) + 1) * 0.001;
+			number = rand() % (10 - 0 + 1) + 0;
+			number += (rand() % (99 - 1 + 1) + 1) * 0.01;
 			fileA << number << ' ';
 		}
 		fileA << '\n';
