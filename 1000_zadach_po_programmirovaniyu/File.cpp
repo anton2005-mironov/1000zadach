@@ -3917,5 +3917,42 @@ void File75() {
 }
 
 void File76() {
+	const int m = 20;
 
+	vector<vector<double>> A(m, vector<double>(m));
+	vector<vector<double>> B(m, vector<double>(m));
+	vector<vector<double>> C(m, vector<double>(m, 0));
+
+	ifstream fileA("SA.txt");
+	for (int i = 0; i < m; ++i) {
+		for (int j = 0; j < m; ++j) {
+			fileA >> A[i][j];
+		}
+	}
+	fileA.close();
+
+	ifstream fileB("SB.txt");
+	for (int i = 0; i < m; ++i) {
+		for (int j = 0; j < m; ++j) {
+			fileB >> B[i][j];
+		}
+	}
+	fileB.close();
+
+	for (int i = 0; i < m; ++i) {
+		for (int j = 0; j < m; ++j) {
+			for (int k = 0; k < m; ++k) {
+				C[i][j] += A[i][k] * B[k][j];
+			}
+		}
+	}
+
+	ofstream fileC("SC.txt");
+	for (int i = 0; i < m; ++i) {
+		for (int j = 0; j < m; ++j) {
+			fileC << C[i][j] << " ";
+		}
+		fileC << "\n";
+	}
+	fileC.close();
 }
