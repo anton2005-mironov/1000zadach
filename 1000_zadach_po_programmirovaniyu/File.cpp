@@ -3917,27 +3917,51 @@ void File75() {
 }
 
 void File76() {
+	srand(time(0));
 	const int n = 20;
+	double number;
 
 	double A[n][n];
 	double B[n][n];
 	double C[n][n];
 
-	ifstream fileA("SA.txt");
+	ofstream fileA("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\SA.txt", ios_base::trunc);
 	for (int i = 0; i < n; ++i) {
-		for (int j = 0; j < m; ++j) {
-			fileA >> A[i][j];
+		for (int j = 0; j < n; ++j) {
+			number = rand() % (100 - 1 + 1) + 1;
+			number += (rand() % (999 - 1 + 1) + 1) * 0.001;
+			fileA << number << ' ';
 		}
+		fileA << '\n';
 	}
 	fileA.close();
 
-	ifstream fileB("SB.txt");
+	ofstream fileB("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\SB.txt", ios_base::trunc);
 	for (int i = 0; i < n; ++i) {
-		for (int j = 0; j < m; ++j) {
-			fileB >> B[i][j];
+		for (int j = 0; j < n; ++j) {
+			number = rand() % (100 - 1 + 1) + 1;
+			number += (rand() % (999 - 1 + 1) + 1) * 0.001;
+			fileB << number << ' ';
 		}
+		fileB << '\n';
 	}
 	fileB.close();
+
+	ifstream fileA1("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\SA.txt");
+	for (int i = 0; i < n; ++i) {
+		for (int j = 0; j < n; ++j) {
+			fileA1 >> A[i][j];
+		}
+	}
+	fileA1.close();
+
+	ifstream fileB1("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\SB.txt");
+	for (int i = 0; i < n; ++i) {
+		for (int j = 0; j < n; ++j) {
+			fileB1 >> B[i][j];
+		}
+	}
+	fileB1.close();
 
 	for (int i = 0; i < n; ++i) {
 		for (int j = 0; j < n; ++j) {
@@ -3947,7 +3971,7 @@ void File76() {
 		}
 	}
 
-	ofstream fileC("SC.txt");
+	ofstream fileC("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\SC.txt", ios_base::trunc);
 	for (int i = 0; i < n; ++i) {
 		for (int j = 0; j < n; ++j) {
 			fileC << C[i][j] << " ";
