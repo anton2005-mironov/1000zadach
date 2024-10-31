@@ -479,6 +479,12 @@ void File(bool tr, int begin)
 			cout << endl << endl;
 			break;
 
+		case 77:
+			File77();
+
+			cout << endl << endl;
+			break;
+
 		default:
 			cout << "Задача отсутствует.";
 			cout << endl << endl;
@@ -3863,7 +3869,7 @@ void File74() {
 		file << a << ' ';
 	}
 	file.close();
-	int I, J;
+	unsigned int I, J;
 	cout << "Введите I: ";
 	cin >> I;
 	cout << "Введите J: ";
@@ -3988,4 +3994,39 @@ void File76() {
 		fileC << "\n";
 	}
 	fileC.close();
+}
+
+void File77() {
+	srand(time(0));
+	const int n = 2;
+	const int m = 4;
+	double number;
+
+	double A[n][m];
+	for (int i = 0; i < n; i++) {
+		fill(A[i], A[i] + n, 0);
+	}
+
+	unsigned int I, J;
+	cout << "Введите I: ";
+	cin >> I;
+	cout << "Введите J: ";
+	cin >> J;
+
+	bool t = false;
+	ifstream fileA1("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\SA.txt");
+	for (int i = 1; i <= n; ++i) {
+		for (int j = 1; j <= m; ++j) {
+			fileA1 >> number;
+			if (i == I && j == J) {
+				break;
+			}
+		}
+		if (t) {
+			break;
+		}
+	}
+	fileA1.close();
+
+	cout << number;
 }
