@@ -4007,6 +4007,17 @@ void File77() {
 		fill(A[i], A[i] + n, 0);
 	}
 
+	ofstream fileA("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\SA.txt", ios_base::trunc);
+	for (int i = 0; i < n; ++i) {
+		for (int j = 0; j < m; ++j) {
+			number = rand() % (10 - 0 + 1) + 0;
+			number += (rand() % (99 - 1 + 1) + 1) * 0.01;
+			fileA << number << ' ';
+		}
+		fileA << '\n';
+	}
+	fileA.close();
+
 	unsigned int I, J;
 	cout << "Введите I: ";
 	cin >> I;
@@ -4015,6 +4026,7 @@ void File77() {
 
 	bool t = false;
 	ifstream fileA1("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\SA.txt");
+	fileA1 >> number;
 	for (int i = 1; i <= n; ++i) {
 		for (int j = 1; j <= m; ++j) {
 			fileA1 >> number;
