@@ -3917,14 +3917,14 @@ void File75() {
 }
 
 void File76() {
-	const int m = 20;
+	const int n = 20;
 
-	vector<vector<double>> A(m, vector<double>(m));
-	vector<vector<double>> B(m, vector<double>(m));
-	vector<vector<double>> C(m, vector<double>(m, 0));
+	double A[n][n];
+	double B[n][n];
+	double C[n][n];
 
 	ifstream fileA("SA.txt");
-	for (int i = 0; i < m; ++i) {
+	for (int i = 0; i < n; ++i) {
 		for (int j = 0; j < m; ++j) {
 			fileA >> A[i][j];
 		}
@@ -3932,24 +3932,24 @@ void File76() {
 	fileA.close();
 
 	ifstream fileB("SB.txt");
-	for (int i = 0; i < m; ++i) {
+	for (int i = 0; i < n; ++i) {
 		for (int j = 0; j < m; ++j) {
 			fileB >> B[i][j];
 		}
 	}
 	fileB.close();
 
-	for (int i = 0; i < m; ++i) {
-		for (int j = 0; j < m; ++j) {
-			for (int k = 0; k < m; ++k) {
+	for (int i = 0; i < n; ++i) {
+		for (int j = 0; j < n; ++j) {
+			for (int k = 0; k < n; ++k) {
 				C[i][j] += A[i][k] * B[k][j];
 			}
 		}
 	}
 
 	ofstream fileC("SC.txt");
-	for (int i = 0; i < m; ++i) {
-		for (int j = 0; j < m; ++j) {
+	for (int i = 0; i < n; ++i) {
+		for (int j = 0; j < n; ++j) {
 			fileC << C[i][j] << " ";
 		}
 		fileC << "\n";
