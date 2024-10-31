@@ -473,6 +473,12 @@ void File(bool tr, int begin)
 			cout << endl << endl;
 			break;
 
+		case 76:
+			File76();
+
+			cout << endl << endl;
+			break;
+
 		default:
 			cout << "Задача отсутствует.";
 			cout << endl << endl;
@@ -3908,4 +3914,8 @@ void File75() {
 
 	inputFile.close();
 	outputFile.close();
+}
+
+void File76() {
+
 }

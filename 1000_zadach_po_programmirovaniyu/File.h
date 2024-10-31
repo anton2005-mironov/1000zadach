@@ -75,5 +75,6 @@ void File72();
 void File73();
 void File74();
 void File75();
+void File76();
 
 void File(bool tr, int begin);
