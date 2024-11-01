@@ -4807,9 +4807,9 @@ void File90() {
 		for (int j = 0; j < n; j++) {
 			number = rand() % (100 - 1 + 1) + 1;
 			number += (rand() % (999 - 1 + 1) + 1) * 0.001;
-			fileA << number << ' ';
+			fileB << number << ' ';
 		}
-		fileA << '\n';
+		fileB << '\n';
 		n++;
 	}
 	fileB.close();
