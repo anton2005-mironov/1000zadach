@@ -491,6 +491,30 @@ void File(bool tr, int begin)
 			cout << endl << endl;
 			break;
 
+		case 79:
+			File79();
+
+			cout << endl << endl;
+			break;
+
+		case 80:
+			File80();
+
+			cout << endl << endl;
+			break;
+
+		case 81:
+			File81();
+
+			cout << endl << endl;
+			break;
+
+		case 82:
+			File82();
+
+			cout << endl << endl;
+			break;
+
 		default:
 			cout << "Задача отсутствует.";
 			cout << endl << endl;
@@ -4085,6 +4109,207 @@ void File78() {
 	for (int j = 0; j < m; ++j) {
 		for (int i = 0; i < n; ++i) {
 			outputFile << matrix[i][j] << ' ';
+		}
+		outputFile << endl;
+	}
+
+	inputFile.close();
+	outputFile.close();
+}
+
+void File79() {
+	srand(time(0));
+	const int n = 2;
+	const int m = 4;
+	double number;
+
+	double A[n][m];
+	for (int i = 0; i < n; i++) {
+		fill(A[i], A[i] + m, 0);
+	}
+	double B[n][m];
+	for (int i = 0; i < n; i++) {
+		fill(B[i], B[i] + m, 0);
+	}
+	double C[n][m];
+	for (int i = 0; i < n; i++) {
+		fill(C[i], C[i] + m, 0);
+	}
+
+	ofstream fileA("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\SA.txt", ios_base::trunc);
+	for (int i = 0; i < n; ++i) {
+		for (int j = 0; j < m; ++j) {
+			number = rand() % (10 - 0 + 1) + 0;
+			number += (rand() % (99 - 1 + 1) + 1) * 0.01;
+			fileA << number << ' ';
+		}
+		fileA << '\n';
+	}
+	fileA.close();
+
+	ofstream fileB("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\SB.txt", ios_base::trunc);
+	for (int i = 0; i < n; ++i) {
+		for (int j = 0; j < m; ++j) {
+			number = rand() % (100 - 1 + 1) + 1;
+			number += (rand() % (999 - 1 + 1) + 1) * 0.001;
+			fileB << number << ' ';
+		}
+		fileB << '\n';
+	}
+	fileB.close();
+
+	ifstream fileA1("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\SA.txt");
+	for (int i = 0; i < n; ++i) {
+		for (int j = 0; j < m; ++j) {
+			fileA1 >> A[i][j];
+		}
+	}
+	fileA1.close();
+
+	ifstream fileB1("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\SB.txt");
+	for (int i = 0; i < n; ++i) {
+		for (int j = 0; j < m; ++j) {
+			fileB1 >> B[i][j];
+		}
+	}
+	fileB1.close();
+
+	for (int i = 0; i < n; ++i) {
+		for (int j = 0; j < m; ++j) {
+			for (int k = 0; k < n; ++k) {
+				C[i][j] += A[i][k] * B[k][j];
+			}
+		}
+	}
+
+	ofstream fileC("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\SC.txt", ios_base::trunc);
+	for (int i = 0; i < n; ++i) {
+		for (int j = 0; j < m; ++j) {
+			fileC << C[i][j] << " ";
+		}
+		fileC << "\n";
+	}
+	fileC.close();
+}
+
+void File80() {
+	srand(time(0));
+	double a;
+	const int m = 20;
+	ofstream file("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\double.txt", ios_base::trunc);
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < m; j++) {
+			if (i <= j) {
+				a = rand() % (100 - 1 + 1) + 1;
+				a += (rand() % (999 - 1 + 1) + 1) * 0.001;
+				file << a << ' ';
+			}
+			else {
+				file << 0.0 << ' ';
+			}
+		}
+		file << '\n';
+	}
+	file.close();
+	double matrix[m][m];
+	ifstream inputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\double.txt");
+	ofstream outputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\another_double.txt", ios_base::trunc);
+
+	for (int i = 0; i < m; ++i) {
+		for (int j = 0; j < m; ++j) {
+			inputFile >> matrix[i][j];
+		}
+	}
+
+	for (int i = 0; i < m; ++i) {
+		for (int j = 0; j < m; ++j) {
+			if (matrix[i][j] != 0) {
+				outputFile << matrix[i][j] << ' ';
+			}
+		}
+		outputFile << endl;
+	}
+
+	inputFile.close();
+	outputFile.close();
+}
+
+void File81() {
+	srand(time(0));
+	double a;
+	const int m = 20;
+	ofstream file("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\double.txt", ios_base::trunc);
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < m; j++) {
+			if (i >= j) {
+				a = rand() % (100 - 1 + 1) + 1;
+				a += (rand() % (999 - 1 + 1) + 1) * 0.001;
+				file << a << ' ';
+			}
+			else {
+				file << 0.0 << ' ';
+			}
+		}
+		file << '\n';
+	}
+	file.close();
+	double matrix[m][m];
+	ifstream inputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\double.txt");
+	ofstream outputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\another_double.txt", ios_base::trunc);
+
+	for (int i = 0; i < m; ++i) {
+		for (int j = 0; j < m; ++j) {
+			inputFile >> matrix[i][j];
+		}
+	}
+
+	for (int i = 0; i < m; ++i) {
+		for (int j = 0; j < m; ++j) {
+			if (matrix[i][j] != 0) {
+				outputFile << matrix[i][j] << ' ';
+			}
+		}
+		outputFile << endl;
+	}
+
+	inputFile.close();
+	outputFile.close();
+}
+
+void File82() {
+	srand(time(0));
+	double a;
+	const int m = 20;
+	ofstream file("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\double.txt", ios_base::trunc);
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < m; j++) {
+			if (i == j || i == j - 1 || i == j + 1) {
+				a = rand() % (100 - 1 + 1) + 1;
+				a += (rand() % (999 - 1 + 1) + 1) * 0.001;
+				file << a << ' ';
+			}
+			else {
+				file << 0.0 << ' ';
+			}
+		}
+		file << '\n';
+	}
+	file.close();
+	double matrix[m][m];
+	ifstream inputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\double.txt");
+	ofstream outputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\another_double.txt", ios_base::trunc);
+
+	for (int i = 0; i < m; ++i) {
+		for (int j = 0; j < m; ++j) {
+			inputFile >> matrix[i][j];
+		}
+	}
+
+	for (int i = 0; i < m; ++i) {
+		for (int j = 0; j < m; ++j) {
+			if (matrix[i][j] != 0) {
+				outputFile << matrix[i][j] << ' ';
+			}
 		}
 		outputFile << endl;
 	}
