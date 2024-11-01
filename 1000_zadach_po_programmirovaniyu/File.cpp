@@ -4050,6 +4050,23 @@ void File77() {
 }
 
 void File78() {
+	srand(time(0));
+	double a;
+	ofstream file("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\double.txt", ios_base::trunc);
+	for (int i = 1; i < 20; i++) {
+		for (int j = 0; j < 20; j++) {
+			a = rand() % (100 - 1 + 1) + 1;
+			a += (rand() % (999 - 1 + 1) + 1) * 0.001;
+			file << a << ' ';
+		}
+		file << '\n';
+	}
+	for (int j = 0; j < 20; j++) {
+		a = rand() % (100 - 1 + 1) + 1;
+		a += (rand() % (999 - 1 + 1) + 1) * 0.001;
+		file << a << ' ';
+	}
+	file.close();
 	const int n = 10;
 	const int m = 20;
 	double matrix[n][n];
