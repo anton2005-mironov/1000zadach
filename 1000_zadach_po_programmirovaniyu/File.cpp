@@ -533,6 +533,12 @@ void File(bool tr, int begin)
 			cout << endl << endl;
 			break;
 
+		case 89:
+			File89();
+
+			cout << endl << endl;
+			break;
+
 		default:
 			cout << "Задача отсутствует.";
 			cout << endl << endl;
@@ -4668,4 +4674,82 @@ void File88() {
 	}
 
 	outputFile.close();
+}
+
+void File89() {
+	srand(time(0));
+	int n = 20;
+	const int m = 20;
+	double number;
+
+	double A[m][m];
+	for (int i = 0; i < n; i++) {
+		fill(A[i], A[i] + n, 0);
+	}
+	double B[m][m];
+	for (int i = 0; i < n; i++) {
+		fill(B[i], B[i] + n, 0);
+	}
+	double C[m][m];
+	for (int i = 0; i < n; i++) {
+		fill(C[i], C[i] + n, 0);
+	}
+
+	ofstream fileA("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\SA.txt", ios_base::trunc);
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < n; j++) {
+			number = rand() % (100 - 1 + 1) + 1;
+			number += (rand() % (999 - 1 + 1) + 1) * 0.001;
+			fileA << number << ' ';
+		}
+		fileA << '\n';
+		n--;
+	}
+	fileA.close();
+
+	int n = 20;
+	ofstream fileB("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\SB.txt", ios_base::trunc);
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < n; j++) {
+			number = rand() % (100 - 1 + 1) + 1;
+			number += (rand() % (999 - 1 + 1) + 1) * 0.001;
+			fileB << number << ' ';
+		}
+		fileB << '\n';
+		n--;
+	}
+	fileB.close();
+
+	ifstream fileA1("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\SA.txt");
+	for (int i = 0; i < n; ++i) {
+		for (int j = 0; j < n; ++j) {
+			fileA1 >> A[i][j];
+		}
+	}
+	fileA1.close();
+
+	ifstream fileB1("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\SB.txt");
+	for (int i = 0; i < n; ++i) {
+		for (int j = 0; j < n; ++j) {
+			fileB1 >> B[i][j];
+		}
+	}
+	fileB1.close();
+
+	for (int i = 0; i < n; ++i) {
+		for (int j = 0; j < n; ++j) {
+			for (int k = 0; k < n; ++k) {
+				C[i][j] += A[i][k] * B[k][j];
+			}
+		}
+	}
+
+	ofstream fileC("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\SC.txt", ios_base::trunc);
+	for (int i = 0; i < n; ++i) {
+		for (int j = 0; j < n; ++j) {
+			fileC << C[i][j] << " ";
+		}
+		fileC << "\n";
+	}
+	fileC.close();
 }
