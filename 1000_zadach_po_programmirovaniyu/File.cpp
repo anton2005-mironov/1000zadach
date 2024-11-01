@@ -4317,3 +4317,129 @@ void File82() {
 	inputFile.close();
 	outputFile.close();
 }
+
+void File83() {
+	srand(time(0));
+	double a;
+	int n = 20;
+	const int m = 20;
+	ofstream file("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\double.txt", ios_base::trunc);
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < n; j++) {
+			a = rand() % (100 - 1 + 1) + 1;
+			a += (rand() % (999 - 1 + 1) + 1) * 0.001;
+			file << a << ' ';
+		}
+		file << '\n';
+		n--;
+	}
+	file.close();
+
+	unsigned int I, J;
+	cout << "Введите I: ";
+	cin >> I;
+	cout << "Введите J: ";
+	cin >> J;
+
+	double matrix[m][m];
+	ifstream inputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\double.txt");
+	ofstream outputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\another_double.txt", ios_base::trunc);
+
+	bool t = true;
+	for (int i = 0; i < m; ++i) {
+		for (int j = 0; j < n; ++j) {
+			inputFile >> matrix[i][j];
+			if (I == i + 1 && J == j + 1) {
+				t = false;
+				break;
+			}
+		}
+		if (t == false) {
+			break;
+		}
+		for (int j = n; j < m; ++j) {
+			matrix[i][j] = 0;
+			if (I == i + 1 && J == j + 1) {
+				t = false;
+				break;
+			}
+		}
+		if (t == false) {
+			break;
+		}
+		n++;
+	}
+
+	if (t == false) {
+		cout << matrix[I][J];
+	}
+	else {
+		cout << -1;
+	}
+
+	inputFile.close();
+	outputFile.close();
+}
+
+void File84() {
+	srand(time(0));
+	double a;
+	int n = 1;
+	const int m = 20;
+	ofstream file("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\double.txt", ios_base::trunc);
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < n; j++) {
+			a = rand() % (100 - 1 + 1) + 1;
+			a += (rand() % (999 - 1 + 1) + 1) * 0.001;
+			file << a << ' ';
+		}
+		file << '\n';
+		n++;
+	}
+	file.close();
+
+	unsigned int I, J;
+	cout << "Введите I: ";
+	cin >> I;
+	cout << "Введите J: ";
+	cin >> J;
+
+	double matrix[m][m];
+	ifstream inputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\double.txt");
+	ofstream outputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\another_double.txt", ios_base::trunc);
+
+	bool t = true;
+	for (int i = 0; i < m; ++i) {
+		for (int j = 0; j < n; ++j) {
+			inputFile >> matrix[i][j];
+			if (I == i + 1 && J == j + 1) {
+				t = false;
+				break;
+			}
+		}
+		if (t == false) {
+			break;
+		}
+		for (int j = n; j < m; ++j) {
+			matrix[i][j] = 0;
+			if (I == i + 1 && J == j + 1) {
+				t = false;
+				break;
+			}
+		}
+		if (t == false) {
+			break;
+		}
+		n--;
+	}
+
+	if (t == false) {
+		cout << matrix[I][J];
+	}
+	else {
+		cout << -1;
+	}
+
+	inputFile.close();
+	outputFile.close();
+}
