@@ -4343,7 +4343,6 @@ void File83() {
 
 	double matrix[m][m];
 	ifstream inputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\double.txt");
-	ofstream outputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\another_double.txt", ios_base::trunc);
 
 	bool t = true;
 	for (int i = 0; i < m; ++i) {
@@ -4378,7 +4377,6 @@ void File83() {
 	}
 
 	inputFile.close();
-	outputFile.close();
 }
 
 void File84() {
@@ -4406,7 +4404,6 @@ void File84() {
 
 	double matrix[m][m];
 	ifstream inputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\double.txt");
-	ofstream outputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\another_double.txt", ios_base::trunc);
 
 	bool t = true;
 	for (int i = 0; i < m; ++i) {
@@ -4441,5 +4438,4 @@ void File84() {
 	}
 
 	inputFile.close();
-	outputFile.close();
 }
