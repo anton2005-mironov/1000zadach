@@ -485,6 +485,12 @@ void File(bool tr, int begin)
 			cout << endl << endl;
 			break;
 
+		case 78:
+			File78();
+
+			cout << endl << endl;
+			break;
+
 		default:
 			cout << "Задача отсутствует.";
 			cout << endl << endl;
@@ -4041,4 +4047,27 @@ void File77() {
 	fileA1.close();
 
 	cout << number;
+}
+
+void File78() {
+	const int n = 20;
+	double matrix[n][n];
+	ifstream inputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\double.txt");
+	ofstream outputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\another_double.txt", ios_base::trunc);
+
+	for (int i = 0; i < n; ++i) {
+		for (int j = 0; j < n; ++j) {
+			inputFile >> matrix[i][j];
+		}
+	}
+
+	for (int j = 0; j < n; ++j) {
+		for (int i = 0; i < n; ++i) {
+			outputFile << matrix[i][j] << ' ';
+		}
+		outputFile << endl;
+	}
+
+	inputFile.close();
+	outputFile.close();
 }
