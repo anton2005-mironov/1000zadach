@@ -515,6 +515,24 @@ void File(bool tr, int begin)
 			cout << endl << endl;
 			break;
 
+		case 83:
+			File83();
+
+			cout << endl << endl;
+			break;
+
+		case 84:
+			File84();
+
+			cout << endl << endl;
+			break;
+
+		case 85:
+			File85();
+
+			cout << endl << endl;
+			break;
+
 		default:
 			cout << "Задача отсутствует.";
 			cout << endl << endl;
@@ -4428,6 +4446,66 @@ void File84() {
 			break;
 		}
 		n--;
+	}
+
+	if (t == false) {
+		cout << matrix[I][J];
+	}
+	else {
+		cout << -1;
+	}
+
+	inputFile.close();
+}
+
+void File85() {
+	srand(time(0));
+	double a;
+	const int m = 20;
+	ofstream file("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\double.txt", ios_base::trunc);
+	for (int j = 0; j < 2; j++) {
+		a = rand() % (100 - 1 + 1) + 1;
+		a += (rand() % (999 - 1 + 1) + 1) * 0.001;
+		file << a << ' ';
+	}
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < 3; j++) {
+			a = rand() % (100 - 1 + 1) + 1;
+			a += (rand() % (999 - 1 + 1) + 1) * 0.001;
+			file << a << ' ';
+		}
+		file << '\n';
+	}
+	for (int j = 0; j < 2; j++) {
+		a = rand() % (100 - 1 + 1) + 1;
+		a += (rand() % (999 - 1 + 1) + 1) * 0.001;
+		file << a << ' ';
+	}
+	file.close();
+
+	unsigned int I, J;
+	cout << "Введите I: ";
+	cin >> I;
+	cout << "Введите J: ";
+	cin >> J;
+
+	double matrix[m][m];
+	for (int i = 0; i < m; i++) {
+		fill(matrix[i], matrix[i] + m, 0);
+	}
+	ifstream inputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\double.txt");
+
+	bool t = true;
+	for (int j = 0; j < 2; j++) {
+		inputFile >> matrix[0][j];
+	}
+	for (int i = 0, n = 0; i < m; ++i) {
+		for (int j = n; j < n + 3; j++) {
+			inputFile >> matrix[i][j];
+		}
+	}
+	for (int j = m - 2; j < m; j++) {
+		inputFile >> matrix[m - 1][j];
 	}
 
 	if (t == false) {

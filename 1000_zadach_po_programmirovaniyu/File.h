@@ -82,5 +82,8 @@ void File79();
 void File80();
 void File81();
 void File82();
+void File83();
+void File84();
+void File85();
 
 void File(bool tr, int begin);
