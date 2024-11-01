@@ -4069,7 +4069,7 @@ void File78() {
 		file << a << ' ';
 	}
 	file.close();
-	double matrix[n][n];
+	double matrix[n][m];
 	ifstream inputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\double.txt");
 	ofstream outputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\another_double.txt", ios_base::trunc);
 
