@@ -4050,18 +4050,19 @@ void File77() {
 }
 
 void File78() {
-	const int n = 20;
+	const int n = 10;
+	const int m = 20;
 	double matrix[n][n];
 	ifstream inputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\double.txt");
 	ofstream outputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\another_double.txt", ios_base::trunc);
 
 	for (int i = 0; i < n; ++i) {
-		for (int j = 0; j < n; ++j) {
+		for (int j = 0; j < m; ++j) {
 			inputFile >> matrix[i][j];
 		}
 	}
 
-	for (int j = 0; j < n; ++j) {
+	for (int j = 0; j < m; ++j) {
 		for (int i = 0; i < n; ++i) {
 			outputFile << matrix[i][j] << ' ';
 		}
