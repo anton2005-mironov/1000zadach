@@ -4055,6 +4055,7 @@ void File78() {
 	const int n = 10;
 	const int m = 20;
 	ofstream file("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\double.txt", ios_base::trunc);
+	file << n << '\n';
 	for (int i = 1; i < n; i++) {
 		for (int j = 0; j < m; j++) {
 			a = rand() % (100 - 1 + 1) + 1;
@@ -4073,12 +4074,14 @@ void File78() {
 	ifstream inputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\double.txt");
 	ofstream outputFile("C:\\Users\\Anton\\source\\repos\\Антон C++\\1000_zadach_po_programmirovaniyu\\another_double.txt", ios_base::trunc);
 
+	inputFile >> a;
 	for (int i = 0; i < n; ++i) {
 		for (int j = 0; j < m; ++j) {
 			inputFile >> matrix[i][j];
 		}
 	}
 
+	outputFile << m << '\n';
 	for (int j = 0; j < m; ++j) {
 		for (int i = 0; i < n; ++i) {
 			outputFile << matrix[i][j] << ' ';
