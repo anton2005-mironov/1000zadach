@@ -53,6 +53,7 @@ int main()
 	case 1:
 		Begin(tr, begin);
 		break;
+
 	case 2:
 		Integer(tr, begin);
 		break;
