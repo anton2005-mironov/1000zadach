@@ -812,7 +812,7 @@ void Series30() {
 	srand(time(NULL));
 
 	for (int i = 1; i <= k; i++) {
-		for (int j = 1; i <= n; i++) {
+		for (int j = 1; j <= n; j++) {
 			a = 0 + rand() % 99;
 
 			sum += a;

@@ -394,9 +394,6 @@ void Case(bool tr, int begin)
 			break;
 
 		case 10:
-			
-			
-
 			cout << "Введите направление: ";
 			
 			do {
