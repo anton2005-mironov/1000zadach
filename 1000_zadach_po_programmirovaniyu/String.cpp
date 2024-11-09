@@ -1147,9 +1147,7 @@ void String40() {
 		s1 = s.substr(a + 1, b - a - 1);
 	}
 
-	for (int i = 0; i < size(s1); i++) {
-		cout << s1[i];
-	}
+	cout << s1;
 }
 
 void String41() {
