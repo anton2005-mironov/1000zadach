@@ -1143,7 +1143,7 @@ void String40() {
 	size_t a = s.find_first_of(' ');
 	size_t b = s.find_last_of(' ');
 
-	if (a != string::npos || b != string::npos) {
+	if (a != string::npos || b != string::npos && a != b) {
 		s1 = s.substr(a + 1, b - a - 1);
 	}
 
