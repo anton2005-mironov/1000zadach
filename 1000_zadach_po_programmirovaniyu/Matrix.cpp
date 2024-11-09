@@ -4927,7 +4927,7 @@ void Matrix89() {
 }
 
 void Matrix90() {
-	int m, sum = 0;
+	int m;
 	cout << "¬ведите M: ";
 	cin >> m;
 
