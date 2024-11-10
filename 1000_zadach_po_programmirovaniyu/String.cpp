@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <stack>
 
 using namespace std;
 
@@ -1859,39 +1860,36 @@ void String69() {
 
 void String70() {
 	string s;
-	char a;
-	int n;
 	cout << "¬ведите S: ";
 	cin >> s;
 
-	for (int i = 0; !(s[i] == '(' || s[i] == ')'); i++) {
-		n = i;
-	}
-	a = s[n++];
+	stack<char> stack;
+	for (int i = 0; i < s.length(); ++i) {
+		char current = s[i];
+		if (current == '(' || current == '[' || current == '{') {
+			stack.push(current);
+		}
+		else if (current == ')' || current == ']' || current == '}') {
+			if (stack.empty()) {
+				cout << i;
+				break;
+			}
 
-	if (a == '(') {
-		for (int i = n++; i < size(s); i++) {
-			if (s[i] == '(' || s[i] == ')' || s[i] == '[' || s[i] == ']' || s[i] == '{' || s[i] == '}') {
-				if (a + 1 == static_cast<int> (s[i]) && a + 2 == static_cast<int> (s[i])) {
-					a = s[i];
-					n = i;
-				}
-				else {
-					cout << i;
-					n = -1;
-					break;
-				}
+			char top = stack.top();
+			if ((top == '(' && current == ')') || (top == '[' && current == ']') || (top == '{' && current == '}')) {
+				stack.pop();
+			}
+			else {
+				cout << i;
+				break;
 			}
 		}
-		if (a == '(') {
-			cout << n;
-		}
-	}
-	else {
-		cout << n;
 	}
 
-	if (n != -1) {
+	if (!stack.empty()) {
+		cout << -1;
+	}
+	else {
 		cout << 0;
 	}
 }
